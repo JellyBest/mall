@@ -1,0 +1,4 @@
+<!--components/search-box/search-box.wxml-->
+<view class="box">
+  <image bindtap="goToSearch" class="search" src="../../assets/search-box.png"></image>
+</view>

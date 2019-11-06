@@ -1,0 +1,10 @@
+<!--pages/home/home.wxml-->
+<search-box></search-box>
+<swiper indicator-dots="{{indicatorDots}}" indicator-color="#ccc" indicator-active-color="#fff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{background}}" wx:key="*this">
+    <swiper-item>
+      <image src="../../assets/banner.png" mode="aspectFit" class="banner"></image>
+      <!-- <view class="swiper-item {{item}}"></view> -->
+    </swiper-item>
+  </block>
+</swiper>

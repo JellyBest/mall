@@ -1,0 +1,11 @@
+/* components/search-box/search-box.wxss */
+.box{
+  height: 74rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search{
+  width: 550rpx;
+  height: 60rpx;
+}

@@ -9,13 +9,39 @@ page{
   justify-content: center;
   align-items: center;
 }
+.logo{
+  width: 66rpx;
+  height: 68rpx;
+  margin-bottom: 50rpx;
+}
+.txt-logo{
+  width: 300rpx;
+  height: 70rpx;
+  margin-bottom: 58rpx;
+}
+.txt{
+  font-size: 40rpx;
+	letter-spacing: 4rpx;
+	color: #333333;
+}
 .circle-box{
   display: flex;
+  margin-top: 108rpx;
   justify-content: center;
 }
 .circle{
-  width: 10rpx;
-  height: 10rpx;
+  width: 20rpx;
+  height: 20rpx;
   border-radius: 50%;
   background-color: green;
+}
+.bgc1{
+  background-color: #9cd63c;
+}
+.bgc2{
+  background-color: #c3f078;
+  margin: 0 40rpx;
+}
+.bgc3{
+  background-color: #e0fbb4;
 }

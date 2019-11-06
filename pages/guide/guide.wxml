@@ -1,8 +1,10 @@
 <view class='guide'>
-  <view>足不出户放肆选</view>
+  <image src="../../assets/logo.png" class="logo"></image>
+  <image src="../../assets/txt.png" class="txt-logo"></image>
+  <view class="txt">足不出户放肆选</view>
   <view class='circle-box'>
-    <view class='circle'></view>
-    <view class='circle'></view>
-    <view class='circle'></view>
+    <view class='circle .bgc1'></view>
+    <view class='circle .bgc2'></view>
+    <view class='circle .bgc3'></view>
   </view>
 </view>

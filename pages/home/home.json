@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "search-box": "../../components/search-box/search-box"
+  },
+  "navigationBarTitleText": "武汉弘益商城",
+  "navigationBarBackgroundColor": "#89c02e",
+  "navigationBarTextStyle": "white"
+}

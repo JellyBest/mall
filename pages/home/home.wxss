@@ -1,0 +1,7 @@
+/* pages/home/home.wxss */
+.banner{
+  height: 320rpx;
+}
+swiper{
+  height: 320rpx;
+}
