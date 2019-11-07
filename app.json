@@ -1,15 +1,19 @@
 {
+  "usingComponents": {
+  },
   "pages": [
     "pages/guide/guide",
     "pages/home/home",
+    "pages/cate/cate",
     "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle": "black"
+
+    "navigationBarBackgroundColor": "#89c02e",
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"
 }

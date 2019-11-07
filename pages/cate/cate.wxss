@@ -1,0 +1,16 @@
+/* pages/cate/cate.wxss */
+.box{
+  display: flex;
+}
+.side-bar-item{
+  text-align: center;
+  width: 148rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #f0f0f0;
+  font-size: 28rpx;
+	color: #c5c5c5;
+}
+.prods{
+  width: 602rpx;
+}

@@ -8,3 +8,44 @@
     </swiper-item>
   </block>
 </swiper>
+<view class="prod-container">
+  <view class="cate">
+    <view class="title">
+      <view>新品推荐</view>
+      <image src="../../assets/more.png" class="more"></image>
+    </view>
+    <view class="new-list">
+      <view class="new-prod" wx:for="{{productList}}" wx:key="{{item.productId}}">
+        <image class="small-pic" src="{{item.productSmallPic}}"></image>
+        <view class="name">{{item.productName}}</view>
+        <view class="price">￥{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="cate">
+    <view class="title">
+      <view>店长推荐</view>
+      <image src="../../assets/more.png" class="more"></image>
+    </view>
+    <view class="new-list shop">
+      <view class="shop-prod" wx:for="{{productList}}" wx:key="{{item.productId}}">
+        <image class="small-pic" src="{{item.productSmallPic}}"></image>
+        <!-- <view class="name">{{item.productName}}</view>
+        <view class="price">￥{{item.price}}</view> -->
+      </view>
+    </view>
+  </view>
+   <view class="cate">
+    <view class="title">
+      <view>限时折扣</view>
+      <image src="../../assets/more.png" class="more"></image>
+    </view>
+    <view class="new-list shop">
+      <view class="shop-prod" wx:for="{{productList}}" wx:key="{{item.productId}}">
+        <image class="small-pic" src="{{item.productSmallPic}}"></image>
+        <!-- <view class="name">{{item.productName}}</view>
+        <view class="price">￥{{item.price}}</view> -->
+      </view>
+    </view>
+  </view>
+</view>

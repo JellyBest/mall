@@ -1,37 +1,39 @@
-// pages/home/home.js
+// pages/cate/cate.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    indicatorDots: true,
-    vertical: false,
-    autoplay: false,
-    interval: 2000,
-    duration: 500,
-
-    productList:[
-      { 
-        productId: "1",
-        productSmallPic: "../../assets/banner.png",
-        price: '1.0',
-        productName: "土豆"
+    active: 0,
+    cateList: [
+      {
+        categoryCode: "1",
+        categoryName: "时令蔬菜"
       },
       {
-        productId: "2",
-        productSmallPic: "../../assets/banner.png",
-        price: '1.0',
-        productName: "土豆"
+        categoryCode: "2",
+        categoryName: "时令蔬菜"
       },
       {
-        productId: "3",
-        productSmallPic: "../../assets/banner.png",
-        price: '1.0',
-        productName: "土豆"
+        categoryCode: "3",
+        categoryName: "时令蔬菜"
+      },
+      {
+        categoryCode: "4",
+        categoryName: "时令蔬菜"
+      },
+      {
+        categoryCode: "5",
+        categoryName: "时令蔬菜"
       }
     ]
+  },
+  onChange(event) {
+    wx.showToast({
+      icon: 'none',
+      title: `切换至第${event.detail}项`
+    });
   },
 
   /**

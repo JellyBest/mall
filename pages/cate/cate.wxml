@@ -1,0 +1,23 @@
+<!--pages/cate/cate.wxml-->
+<search-box></search-box>
+<view class="box">
+  <view class="side-bar">
+    <view wx:for="{{cateList}}" wx:key="{{item.categoryCode}}" class="side-bar-item">
+    {{item.categoryName}}
+    </view>
+  </view>
+  <view class="prods">
+    <van-card
+      
+      price="2.00"
+      desc="描述信息"
+      title="商品标题"
+      thumb="{{ imageURL }}"
+    />  
+  </view>
+</view>
+<!-- <van-sidebar active="{{ active }}" bind:change="onChange">
+  <van-sidebar-item title="标签名称" />
+  <van-sidebar-item title="标签名称" />
+  <van-sidebar-item title="标签名称" />
+</van-sidebar> -->
