@@ -1,4 +1,4 @@
-/* pages/cate/cate.wxss */
+/* pages/car/car.wxss */
 .box{
   display: flex;
 }
@@ -16,7 +16,9 @@
   color: #000;
 }
 .prods{
-  width: 602rpx;
+  width: 750rpx;
+  padding-bottom: 90rpx;
+  box-sizing: border-box;
 }
 .prods .card{
   background-color: #fff;
@@ -24,6 +26,8 @@
 }
 .card .card-title{
   margin: 20rpx 0 6rpx;
+  padding-right: 30rpx;
+  box-sizing: border-box;
   font-size: 24rpx;
   color: #090909;
 }
@@ -31,6 +35,7 @@
   margin-top: 58rpx;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .price-box{
   display: flex;
@@ -49,4 +54,27 @@
 .car{
   width: 33rpx;
   height: 33rpx;
+}
+.bottom{
+  color: #dd666a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90rpx;
+  padding: 0 40rpx 0 100rpx;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.btn{
+  width: 170rpx;
+	height: 80rpx;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 20rpx;
+  background-color: #dd666a;
 }

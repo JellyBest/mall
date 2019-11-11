@@ -2,18 +2,40 @@
 <search-box></search-box>
 <view class="box">
   <view class="side-bar">
-    <view wx:for="{{cateList}}" wx:key="{{item.categoryCode}}" class="side-bar-item">
-    {{item.categoryName}}
+    <view bindtap="changeTab" wx:for="{{cateList}}" data-code="{{item.categoryCode}}" wx:key="{{item.categoryCode}}" class="side-bar-item {{item.categoryCode==active?'active':''}}">
+      {{item.categoryName}}
     </view>
   </view>
+  <view class="sort"></view>
   <view class="prods">
-    <van-card
-      
-      price="2.00"
-      desc="描述信息"
-      title="商品标题"
-      thumb="{{ imageURL }}"
-    />  
+    <van-card custom-class="card" title-class="card-title" title="胡萝卜" thumb="{{ imageURL }}">
+      <view slot="desc">
+        <van-tag round type="danger" plain>爆款直降</van-tag>
+      </view>
+      <view slot="bottom">
+        <view class="price">
+          <view class="price-box">
+            <view class="red-price">¥48.88</view>
+            <view class="grey-price">58.90元</view>
+          </view>
+          <image class="car" src="../../assets/car.png"></image>
+        </view>
+      </view>
+    </van-card>
+    <van-card custom-class="card" title-class="card-title" title="胡萝卜" thumb="{{ imageURL }}">
+      <view slot="desc">
+        <van-tag round type="danger" plain>爆款直降</van-tag>
+      </view>
+      <view slot="bottom">
+        <view class="price">
+          <view class="price-box">
+            <view class="red-price">¥48.88</view>
+            <view class="grey-price">58.90元</view>
+          </view>
+          <image class="car" src="../../assets/car.png"></image>
+        </view>
+      </view>
+    </van-card>
   </view>
 </view>
 <!-- <van-sidebar active="{{ active }}" bind:change="onChange">

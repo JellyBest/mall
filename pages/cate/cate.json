@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "search-box": "../../components/search-box/search-box",
-    "van-card": "/miniprogram_npm/vant-weapp/card/index"
+    "van-card": "/miniprogram_npm/vant-weapp/card/index",
+    "van-tag": "/miniprogram_npm/vant-weapp/tag/index"
   },
   "navigationBarTitleText": "全部分类"
 }
