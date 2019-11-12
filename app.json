@@ -6,6 +6,7 @@
     "pages/home/home",
     "pages/cate/cate",
     "pages/car/car",
+    "pages/user/user",
     "pages/index/index",
     "pages/logs/logs"
   ],

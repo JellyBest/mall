@@ -73,6 +73,13 @@
 					"id": -1,
 					"name": "car",
 					"pathName": "pages/car/car",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "user",
+					"pathName": "pages/user/user",
 					"scene": null
 				}
 			]

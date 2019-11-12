@@ -1,0 +1,72 @@
+/* pages/user/user.wxss */
+.top{
+  width: 750rpx;
+  height: 320rpx;
+  background-color: #89c02e;
+  display: flex;
+  justify-content: center;
+}
+.card{
+  width: 650rpx;
+	height: 228rpx;
+	background-color: #ffffff;
+	box-shadow: 0px 8px 21px 3px 
+		rgba(229, 230, 229, 0.75);
+  margin-top: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.head{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  margin-top: -70rpx;
+}
+.name{
+  margin-top: 40rpx;
+}
+.order{
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #ccc;
+}
+.order-title{
+  padding: 24rpx 0;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.order-title .left{
+  font-size: 32rpx;
+}
+.order-title .right{
+  font-size: 24rpx;
+  color: #999;
+}
+.grid{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40rpx;
+}
+.grid-item{
+  width: 80rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.media-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44rpx;
+  height: 44rpx;
+}
+.media-txt{
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #333;
+}
