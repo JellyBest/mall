@@ -1,0 +1,8 @@
+<!--components/tab-bar/tab-bar.wxml-->
+<van-tabs active="{{ active }}" tab-active-class="active-tab" color="#89c02e" swipe-threshold="5" bind:change="onChange">
+  <van-tab title-style="font-size:24rpx;" title="全部订单"></van-tab>
+  <van-tab title-style="font-size:24rpx;" title="待付款"></van-tab>
+  <van-tab title-style="font-size:24rpx;" title="待收货"></van-tab>
+  <van-tab title-style="font-size:24rpx;" title="已收货"></van-tab>
+  <van-tab title-style="font-size:24rpx;" title="售后"></van-tab>
+</van-tabs>

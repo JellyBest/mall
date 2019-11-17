@@ -1,0 +1,66 @@
+/* pages/newAddress/newAddress.wxss */
+
+.cell {
+  height: 80rpx;
+  border-bottom: 1rpx solid #ccc;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.label {
+  width: 140rpx;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.default-label {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.cell.default {
+  display: flex;
+  justify-content: space-between;
+}
+
+switch {
+  margin-right: 130rpx;
+}
+
+.wx-switch-input {
+  width: 90rpx !important;
+  height: 48rpx !important;
+}
+
+.wx-switch-input::before {
+  width: 90rpx !important;
+  height: 48rpx !important;
+}
+
+.wx-switch-input::after {
+  width: 18px !important;
+  height: 18px !important;
+}
+.btn{
+  width: 230rpx;
+	height: 60rpx;
+	background-color: #89c02e;
+	border-radius: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fafafa;
+  font-size: 32rpx;
+}
+.btn:hover{
+  opacity: 0.4;
+}
+.btn-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 500rpx;
+}

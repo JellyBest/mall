@@ -1,0 +1,89 @@
+/* pages/order/order.wxss */
+.top{
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  /* height: 200rpx; */
+  background-color: #89c02e;
+  display: flex;
+  justify-content: space-between
+}
+.info{
+  flex-grow: 1;
+  padding-left: 60rpx;
+  padding-right: 10rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+}
+.cell{
+  display: flex;
+  color: #fff;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+.content.right{
+  display: flex;
+  justify-content: space-between;
+}
+.arrow{
+  display: flex;
+  align-items: center;
+}
+.content{
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.add-img{
+  width: 28rpx;
+  height: 36rpx;
+}
+.param{
+  display: flex;
+}
+.card-title{
+  display: flex;
+  justify-content: space-between;
+}
+.card-price{
+  color: #dd666a;
+  font-size: 24rpx;
+}
+.card{
+  border-radius: 8rpx;
+	border: solid 2rpx #efeef3;
+  margin-bottom: 30rpx;
+  background: #fff;
+}
+.card-box{
+  padding: 20rpx 40rpx 0;
+}
+.btm-box{
+  position: fixed;
+  bottom: 100rpx;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 40rpx;
+  box-sizing: border-box;
+}
+.red{
+  color: #dd666a;
+}
+.total{
+  display: flex;
+  font-size: 24rpx;
+}
+.btm-btn{
+  margin-left: 90rpx;
+  width: 170rpx;
+	height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+	background-color: #dd666a;
+  color: #fff;
+	border-radius: 20rpx;
+  font-size: 24rpx;
+}

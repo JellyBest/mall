@@ -1,0 +1,15 @@
+<!--pages/search/search.wxml-->
+<view class="search">
+  <van-icon name="search" size="40rpx" color="#333" />
+  <input placeholder="胡萝卜"></input>
+</view>
+
+
+<view class="title">
+  <view>商家推荐</view>
+  <van-icon name="delete" size="40rpx" />
+</view>
+<view class="search-tags">
+  <view class="tag">胡萝卜</view>
+  <view class="tag">胡萝卜</view>
+</view>

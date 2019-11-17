@@ -1,17 +1,11 @@
-// pages/user/user.js
+// pages/order/order.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
-  },
-  newAddress(){
-    console.log(123)
-    wx.navigateTo({
-      url: '/pages/newAddress/newAddress',
-    })
+    imageURL: "../../../assets/carrot.png",
   },
 
   /**

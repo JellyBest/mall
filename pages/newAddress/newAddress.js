@@ -1,4 +1,4 @@
-// pages/user/user.js
+// pages/newAddress/newAddress.js
 Page({
 
   /**
@@ -6,12 +6,6 @@ Page({
    */
   data: {
 
-  },
-  newAddress(){
-    console.log(123)
-    wx.navigateTo({
-      url: '/pages/newAddress/newAddress',
-    })
   },
 
   /**

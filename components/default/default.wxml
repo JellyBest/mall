@@ -1,0 +1,5 @@
+<!--components/default/default.wxml-->
+<view class="default-box" hidden="{{hidden}}">
+  <image class="default" src="../../assets/default.png"></image>
+  <view class="text">{{textStr}}</view>
+</view>

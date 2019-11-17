@@ -70,3 +70,78 @@
   font-size: 24rpx;
   color: #333;
 }
+.ads{
+  padding: 0 40rpx;
+}
+.address{
+  font-size: 32rpx;
+  color: #333;
+  padding-top: 20rpx;
+}
+.info{
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 62rpx;
+}
+.add-img{
+  width: 24rpx;
+  height: 26rpx;
+  margin-right: 12rpx;
+}
+.detail{
+  display: flex;
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 40rpx;
+}
+.op-yes{
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 9rpx;
+}
+.default{
+  display: flex;
+  align-items: center;
+}
+.ops{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.op-right{
+  display: flex;
+}
+.edit{
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
+.edit-box{
+  display: flex;
+  align-items: center;
+}
+.edit-box:nth-of-type(1){
+  margin-right: 38rpx;
+}
+.btn{
+  width: 500rpx;
+	height: 90rpx;
+	background-color: #89c02e;
+	border-radius: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fafafa;
+  font-size: 32rpx;
+}
+.btn:hover{
+  opacity: 0.4;
+}
+.btn-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32rpx;
+}

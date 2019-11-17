@@ -1,0 +1,7 @@
+/* components/tab-bar/tab-bar.wxss */
+.title{
+  font-size: 20rpx;
+}
+.title-class{
+  
+}

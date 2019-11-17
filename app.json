@@ -7,6 +7,11 @@
     "pages/cate/cate",
     "pages/car/car",
     "pages/user/user",
+    "pages/newAddress/newAddress",
+    "pages/search/search",
+    "pages/order/order",
+    "pages/myOrder/myOrder",
+    "pages/soldService/soldService",
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -16,6 +21,29 @@
 
     "navigationBarBackgroundColor": "#89c02e",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "/assets/home.png",
+      "selectedIconPath": "/assets/home-active.png"
+    },{
+      "pagePath": "pages/cate/cate",
+      "text": "分类",
+      "iconPath": "/assets/cate.png",
+      "selectedIconPath": "/assets/cate-active.png"
+    },{
+      "pagePath": "pages/car/car",
+      "text": "购物车",
+      "iconPath": "/assets/shopcar.png",
+      "selectedIconPath": "/assets/shopcar-active.png"
+    },{
+      "pagePath": "pages/user/user",
+      "text": "我的",
+      "iconPath": "/assets/user.png",
+      "selectedIconPath": "/assets/user-active.png"
+    }]
   },
   "sitemapLocation": "sitemap.json"
 }

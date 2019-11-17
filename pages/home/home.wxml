@@ -9,14 +9,14 @@
   </block>
 </swiper>
 <view class="prod-container">
-  <view class="cate">
+  <view class="cate" wx:for="{{newPros}}" wx:key="{{item.id}}" hidden="{{item =='' || item.productDtoList.length == 0}}">
     <view class="title">
-      <view>新品推荐</view>
+      <view>{{item.moduleName}}</view>
       <image src="../../assets/more.png" class="more"></image>
     </view>
     <view class="new-list">
-      <view class="new-prod" wx:for="{{productList}}" wx:key="{{item.productId}}">
-        <image class="small-pic" src="{{item.productSmallPic}}"></image>
+      <view class="new-prod" wx:for="{{item.productDtoList}}" wx:key="{{item.productId}}">
+        <image class="small-pic" src="../../assets/banner.png"></image>
         <view class="name">{{item.productName}}</view>
         <view class="price">￥{{item.price}}</view>
       </view>

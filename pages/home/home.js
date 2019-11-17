@@ -1,4 +1,5 @@
 // pages/home/home.js
+import { post } from '../../api/http.js'
 Page({
 
   /**
@@ -11,7 +12,7 @@ Page({
     autoplay: false,
     interval: 2000,
     duration: 500,
-
+    newPros: [],
     productList:[
       { 
         productId: "1",
@@ -33,12 +34,71 @@ Page({
       }
     ]
   },
+  getPro(code){
+    return new Promise( (resolve,reject) => {
+      post("mini/getModuleProList.do", {
+        moduleCode: code,
+        page:1,
+        size:3
+      }).then(res => {
+        resolve(res.data.data?res.data.data:"")
+      }).catch(err => {
+        console.error(err)
+      })
+    } )
+  },
+  /**
+   * 获取商品列表
+   */
+  getProducts(arr){
+    let arrMap = arr.map(item => {
+      return this.getPro(item)
+    })
+    Promise.all(arrMap).then(res => {
+      console.log(res)
+      this.data.newPros = res
+      this.setData({
+        newPros: this.data.newPros
+      })
+    })
+  },
+  /**
+   * 获取板块名称列表
+   */
+  getList(){
+    post("mini/getModuleList.do",{}).then(res => {
+      let data = res.data.data.moduleDtoList
+      console.log(data)
+      let newPros = data.filter(item => {
+        return item.moduleType == "NEW_PRO"
+      })
+      this.setData({
+        newPros: newPros
+      })
+      let arr = newPros.map(item => {
+        return item.moduleCode
+      })
+      this.getProducts(arr)
+
+    })
+  },
+
+  getModuleProList(){
+    post("mini/getModuleProList.do",{
+      moduleCode: "1573962858735",
+      page: 1,
+      size: 10
+    }).then(res => {
+      console.log(res)
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getList()
+    // this.getModuleProList()
   },
 
   /**

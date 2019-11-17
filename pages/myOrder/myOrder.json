@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "tab-bar": "../../components/tab-bar/tab-bar",
+    "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "default": "../../components/default/default"
+  },
+  "navigationBarTitleText": "我的订单"
+}

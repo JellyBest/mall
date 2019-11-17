@@ -45,3 +45,6 @@ page{
 .bgc3{
   background-color: #e0fbb4;
 }
+.author{
+  margin-top: 50rpx;
+}

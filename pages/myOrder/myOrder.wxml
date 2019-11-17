@@ -1,0 +1,77 @@
+<!--pages/myOrder/myOrder.wxml-->
+<tab-bar></tab-bar>
+<default hidden="{{true}}" textStr="您暂时没有订单信息哦！"></default>
+<view class="order-box">
+  <view class="item">
+    <view class="status">
+      <view class="left">
+        <view class="desc">已收货</view>
+        <view class="date">2019-10-14</view>
+      </view>
+      <van-icon name="arrow" size="20rpx" />
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共2件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥203.8</view>
+    </view>
+    <view class="btn-box">
+      <van-button type="default" custom-class="button-left">申请售后</van-button>
+      <van-button type="primary" custom-class="button-right">主要按钮</van-button>
+    </view>
+  </view>
+  <view class="item">
+    <view class="status">
+      <view class="left">
+        <view class="desc">已收货</view>
+        <view class="date">2019-10-14</view>
+      </view>
+      <van-icon name="arrow" size="20rpx" />
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共2件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥203.8</view>
+    </view>
+    <view class="btn-box">
+      <van-button type="default" custom-class="button-left">申请售后</van-button>
+      <van-button type="primary" custom-class="button-right">主要按钮</van-button>
+    </view>
+  </view>
+</view>

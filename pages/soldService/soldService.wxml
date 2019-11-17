@@ -1,0 +1,23 @@
+<!--pages/soldService/soldService.wxml-->
+<view class="form">
+  <view class="cell">
+    <view>订单号码:</view>
+    <view>20191014036587</view>
+  </view>
+  <view class="cell">
+    <view>下单时间:</view>
+    <view>2018-10-14 16：30：28</view>
+  </view>
+  <view class="area">
+    <textarea placeholder="请进行描述..."></textarea>
+  </view>
+  <view class="upload-btn">
+    <image class="upload" src="../../assets/upload.png"></image>
+    <view>照片上传</view>
+  </view>
+  <view class="imgs">
+    <view> 
+      <image src=""></image>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,85 @@
+/* pages/myOrder/myOrder.wxss */
+.item{
+  background-color: #f7f7f7;
+}
+.order-box{
+  margin-top: 14rpx;
+}
+.status{
+  height: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40rpx;
+  font-size: 24rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.desc{
+  color: #dd666a;
+}
+.status .left{
+  display: flex;
+  align-items: center;
+}
+.left .date{
+  font-size: 20rpx;
+  margin-left: 30rpx;
+}
+.good{
+  width: 64rpx;
+  height: 36rpx;
+}
+.list{
+  padding: 0 40rpx;
+  height: 60rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #090909;
+}
+.list .left{
+  display: flex;
+}
+.name{
+  margin: 0 20rpx 0 12rpx;
+}
+.weight{
+  margin-right: 15rpx;
+}
+.btn-box{
+  display: flex;
+  justify-content: flex-end;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 26rpx 40rpx 26rpx 0;
+}
+.btn-box .button-left, .btn-box .button-right{
+  padding: 0;
+  width: 130rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  border-radius: 12rpx;
+  color: #c5c5c5;
+  margin-left: 40rpx;
+}
+.btn-box .button-right{
+  color: #fff;
+  background-color: #89c02e;
+}
+.total{
+  padding: 0 40rpx 20rpx 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 24rpx;
+  color: #090909;
+}
+.red{
+  color: #e17f82;
+}
+.mr-10{
+  margin-right: 10rpx;
+}

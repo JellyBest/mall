@@ -1,0 +1,11 @@
+/* components/default/default.wxss */
+.default-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text{
+  color: #c5c5c5;
+  font-size: 32rpx;
+  margin-top: 50rpx;
+}

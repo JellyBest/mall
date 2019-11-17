@@ -1,0 +1,65 @@
+<!--pages/order/order.wxml-->
+<view class="top">
+  <van-icon name="location-o" size="40rpx" color="#fff" />
+  <view class="info">
+    <view class="cell">
+      <view class="label">收货人:</view>
+      <view class="content right">
+        <view>昵称昵称</view>
+        <view>18888888888</view>
+      </view>
+    </view>
+    <view class="cell">
+      <view class="label">收货地址：</view>
+      <view class="content">
+      某某某小区三单元1202
+      </view>
+    </view>
+  </view>
+  <view class="arrow">
+    <van-icon name="arrow" size="40rpx" color="#fff" />
+  </view>
+</view>
+<view class="card-box">
+   <van-card custom-class="card" thumb="{{ imageURL }}">
+      <view class="card-title" slot="title">
+        <view>关于胡萝卜的产品介绍关于胡萝卜的产品介绍关于胡萝</view>
+        <view class="card-price">￥48.88</view>
+      </view>
+      <view slot="bottom">
+        <view class="param">
+          <view>商品规格：</view>
+          <view>50斤</view>
+        </view>
+        <view class="param">
+          <view>快递：</view>
+          <view>10.00</view>
+        </view>
+      </view>
+    </van-card>
+
+    <van-card custom-class="card" thumb="{{ imageURL }}">
+      <view class="card-title" slot="title">
+        <view>关于胡萝卜的产品介绍关于胡萝卜的产品介绍关于胡萝</view>
+        <view class="card-price">￥48.88</view>
+      </view>
+      <view slot="bottom">
+        <view class="param">
+          <view>商品规格：</view>
+          <view>50斤</view>
+        </view>
+        <view class="param">
+          <view>快递：</view>
+          <view>10.00</view>
+        </view>
+      </view>
+    </van-card>
+</view>
+<view class="btm-box">
+  <view class="total">
+    <view class="btm-label">合计：</view><view class="red">99</view>
+  </view>
+  <view class="btm-btn">
+    去支付
+  </view>
+</view>

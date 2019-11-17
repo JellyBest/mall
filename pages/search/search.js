@@ -1,4 +1,5 @@
-// pages/user/user.js
+// pages/search/search.js
+import { post } from '../../api/http.js'
 Page({
 
   /**
@@ -7,18 +8,17 @@ Page({
   data: {
 
   },
-  newAddress(){
-    console.log(123)
-    wx.navigateTo({
-      url: '/pages/newAddress/newAddress',
+  getSearchNameList(){
+    post("mini/getSearchNameList.do",{}).then(res => {
+      console.log(res,'se')
     })
-  },
 
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getSearchNameList()
   },
 
   /**
