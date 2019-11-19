@@ -1,6 +1,6 @@
 /* pages/soldService/soldService.wxss */
 page{
-  padding: 40rpx;
+  padding: 20rpx 40rpx;
   box-sizing: border-box;
 }
 .form{
@@ -34,4 +34,27 @@ page{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.imgs{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20rpx;
+}
+.img-item{
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 6rpx;
+  border: 2rpx solid #ccc;
+}
+.back{
+  display: flex;
+}
+.back .label{
+  margin-right: 20rpx;
+}
+.radio-class{
+  display: flex;
+}
+.radio-left{
+  margin-right: 20rpx;
 }

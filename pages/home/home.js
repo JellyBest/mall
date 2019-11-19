@@ -41,7 +41,8 @@ Page({
         page:1,
         size:3
       }).then(res => {
-        resolve(res.data.data?res.data.data:"")
+        console.log(res,'rolist')
+        resolve(res?res:"")
       }).catch(err => {
         console.error(err)
       })
@@ -67,15 +68,15 @@ Page({
    */
   getList(){
     post("mini/getModuleList.do",{}).then(res => {
-      let data = res.data.data.moduleDtoList
-      console.log(data)
-      let newPros = data.filter(item => {
-        return item.moduleType == "NEW_PRO"
-      })
-      this.setData({
-        newPros: newPros
-      })
-      let arr = newPros.map(item => {
+      console.log(res,'list')
+      let data = res.moduleDtoList
+      // let newPros = data.filter(item => {
+      //   return (item.moduleType == "NEW_PRO") || (item.moduleType == "BOSS_TJ")
+      // })
+      // this.setData({
+      //   newPros: data
+      // })
+      let arr = data.map(item => {
         return item.moduleCode
       })
       this.getProducts(arr)

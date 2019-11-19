@@ -16,8 +16,20 @@
     <view>照片上传</view>
   </view>
   <view class="imgs">
-    <view> 
+    <view class="img-item">
+      <image src=""></image>
+    </view>
+    <view class="img-item">
       <image src=""></image>
     </view>
   </view>
+  <view class="back">
+    <view class="label">是否退款</view>
+    <van-radio-group class="radio-class" value="{{ radio }}" bind:change="onChange">
+      <van-radio checked-color="#89c02e" name="1" class="radio-left">是</van-radio>
+      <van-radio checked-color="#89c02e" name="2">否</van-radio>
+    </van-radio-group>
+  </view>
+  
 </view>
+

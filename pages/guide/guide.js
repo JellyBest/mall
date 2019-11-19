@@ -12,12 +12,14 @@ Page({
   getLogin(){
     wx.request({
       method: 'POST',
-      url: 'http://monkeyhao.easy.echosite.cn/api/mini/loginByWeiXin.do',
+      url: 'http://monkeyhao.easy.echosite.cn/api/login/loginByWeiXin.do',
       data: {
         code: this.code,
         userInfo: this.fullUserInfo
       },
       success: res =>{
+        // const nonce = res.header.nonce
+        // wx.setStorageSync("nonce", nonce)
         if (res.statusCode == 200 && res.data.respCode == "0000"){
           wx.setStorageSync("token", res.data.data.token)
           this.goNext()

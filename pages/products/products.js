@@ -1,17 +1,11 @@
-// pages/soldService/soldService.js
+// pages/products/products.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    radio: "1"
-  },
-  onChange(e){
-    let value = e.detail
-    this.setData({
-      radio: value
-    })
+
   },
 
   /**

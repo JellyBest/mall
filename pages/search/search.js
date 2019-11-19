@@ -6,13 +6,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    searchParam:{
+      productName: "",
+      page: 1,
+      size: 20
+    }
+  },
+  /**
+   * 搜索
+   */
+  searchClick(){
+    post("mini/getSearchProList.do",this.data.searchParam).then(res => {
+      console.log(res,'search')
+    })
+  },
+  inputChange(e){
+    console.log(e,'input')
+    let value = e.detail.value
+    this.data.searchParam.productName = value
   },
   getSearchNameList(){
     post("mini/getSearchNameList.do",{}).then(res => {
       console.log(res,'se')
+    }).catch(err => {
+      console.error(err)
     })
-
   },
   /**
    * 生命周期函数--监听页面加载

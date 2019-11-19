@@ -1,17 +1,12 @@
-// pages/soldService/soldService.js
+// pages/searchResult/searchResult.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    radio: "1"
-  },
-  onChange(e){
-    let value = e.detail
-    this.setData({
-      radio: value
-    })
+    step: 2,
+    imageURL: "../../../assets/carrot.png",
   },
 
   /**

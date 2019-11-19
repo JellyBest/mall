@@ -115,6 +115,13 @@
 					"id": -1,
 					"name": "soldService",
 					"pathName": "pages/soldService/soldService",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "searchResult",
+					"pathName": "pages/searchResult/searchResult",
 					"scene": null
 				}
 			]

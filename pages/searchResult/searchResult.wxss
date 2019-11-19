@@ -1,0 +1,86 @@
+/* pages/searchResult/searchResult.wxss */
+.box{
+  display: flex;
+}
+.side-bar-item{
+  text-align: center;
+  width: 148rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #f0f0f0;
+  font-size: 28rpx;
+	color: #c5c5c5;
+}
+.side-bar-item.active{
+  background-color: #fafafa;
+  color: #000;
+}
+.prods{
+  width: 750rpx;
+  padding-bottom: 90rpx;
+  box-sizing: border-box;
+}
+.prods .card{
+  background-color: #fff;
+  margin-bottom: 50rpx;
+}
+.card .card-title{
+  margin: 20rpx 0 6rpx;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #090909;
+}
+.card .pro-img{
+  
+}
+.card .van-card_thumb{
+  width: 344rpx;
+}
+.price{
+  margin-top: 58rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price-box{
+  display: flex;
+  justify-content: flex-start;
+}
+.red-price{
+  font-size: 24rpx;
+  color: #dd666a; 
+  margin-right: 10rpx;
+}
+.grey-price{
+  font-size: 20rpx;
+  color: #ccc;
+  text-decoration: line-through;
+}
+.car{
+  width: 33rpx;
+  height: 33rpx;
+}
+.bottom{
+  color: #dd666a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90rpx;
+  padding: 0 40rpx 0 100rpx;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.btn{
+  width: 170rpx;
+	height: 80rpx;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 20rpx;
+  background-color: #dd666a;
+}
