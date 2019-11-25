@@ -1,24 +1,38 @@
 // pages/user/user.js
+import { post } from '../../api/http.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    addressList: []
   },
   newAddress(){
-    console.log(123)
     wx.navigateTo({
       url: '/pages/newAddress/newAddress',
     })
   },
-
+  goToEdit(){
+    wx.navigateTo({
+      url: '/pages/editAddress/editAddress',
+    })
+  },
+  getAddressList(){
+    post("address/wxReceiveList.do",{
+    }).then(res => {
+      this.setData({
+        addressList: res.receiveList
+      })
+    }).catch(err => {
+      console.error(err)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -32,7 +46,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getAddressList()
   },
 
   /**

@@ -1,4 +1,5 @@
 // pages/cate/cate.js
+import { post } from '../../api/http.js'
 Page({
 
   /**
@@ -6,36 +7,44 @@ Page({
    */
   data: {
     imageURL: "../../../assets/carrot.png",
-    active: 0,
-    cateList: [
-      {
-        categoryCode: "1",
-        categoryName: "时令蔬菜"
-      },
-      {
-        categoryCode: "2",
-        categoryName: "时令蔬菜"
-      },
-      {
-        categoryCode: "3",
-        categoryName: "时令蔬菜"
-      },
-      {
-        categoryCode: "4",
-        categoryName: "时令蔬菜"
-      },
-      {
-        categoryCode: "5",
-        categoryName: "时令蔬菜"
-      }
-    ]
+    active: "",
+    cateList: [],
+    proList: []
   },
   changeTab(e){
     let code = e.currentTarget.dataset.code
     this.setData({
       active: code
     })
+    this.getCatePro(code)
+  },
+  //加入购物车
+  addToCar(e){
     console.log(e)
+    let code = e.currentTarget.dataset.code
+    post("shopCar/putProToShopCar.do",{
+      userCode: wx.getStorageSync("code"),
+      productCode: code,
+      amount: 1
+    }).then(res => {
+        
+    }).catch(err=>{
+      console.error(err)
+    })
+  },
+  // 获取分类下商品
+  getCatePro(code){
+    post("category/getCategoryProList.do",{
+      categoryCode: code,
+      page: 1,
+      size: 20,
+      orderByPrice: 1
+    }).then(res => {
+      let data = res.productDtoList
+      this.setData({
+        proList: data
+      })
+    })
   },
   onChange(event) {
     wx.showToast({
@@ -48,13 +57,22 @@ Page({
     this.setData({
       active: code
     })
+    this.getCatePro(code)
   },
-
+  getCateList(){
+    post("category/getCategoryList.do",{}).then(res => {
+      this.setData({ cateList: res.categoryDtoList})
+      this.initData()
+    }).catch(err => {
+      console.error(err)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initData()
+    
+    this.getCateList()
   },
 
   /**

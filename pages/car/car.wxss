@@ -40,6 +40,10 @@
 .price-box{
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+}
+.stand{
+  margin-left: 10rpx;
 }
 .red-price{
   font-size: 24rpx;

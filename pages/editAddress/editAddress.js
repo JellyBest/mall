@@ -1,7 +1,5 @@
-// pages/newAddress/newAddress.js
+// pages/editAddress/editAddress.js
 import { post } from '../../api/http.js'
-const app = getApp()
-const Toast = app.globalData.Toast
 const citys = {
   '浙江': ['杭州', '宁波', '温州', '嘉兴', '湖州'],
   '福建': ['福州', '厦门', '莆田', '三明', '泉州']
@@ -16,24 +14,24 @@ Page({
     receiveName: "",
     receiveMobile: "",
     isDefault: "",
-    districts:[],
+    districts: [],
     districtArray: [],
     districtIndex: null,
     provinceIndex: null,
     provinceArray: [],
-    provinces:[],
+    provinces: [],
     cities: [],
     cityArray: [],
     cityIndex: null,
     array: ['美国', '中国', '巴西', '日本'],
     index: null,
   },
-  bindProvinceChange(e){
+  bindProvinceChange(e) {
     this.setData({
       provinceIndex: e.detail.value
     })
     this.getCity()
-    console.log(e,'p')
+    console.log(e, 'p')
   },
   bindCityChange(e) {
     this.setData({
@@ -43,7 +41,7 @@ Page({
     this.getDistrict()
     console.log(e, 'p')
   },
-  bindDistrictChange(e){
+  bindDistrictChange(e) {
     this.setData({
       districtIndex: e.detail.value
     })
@@ -58,8 +56,8 @@ Page({
     const { picker, value, index } = event.detail;
     picker.setColumnValues(1, citys[value[0]]);
   },
-  getProvince(){
-    post("address/address.do",{
+  getProvince() {
+    post("address/address.do", {
       type: "province",
     }).then(res => {
       let arr = res.addressList.map(item => {
@@ -73,8 +71,8 @@ Page({
       console.error(err)
     })
   },
-  getCity(){
-    post("address/address.do",{
+  getCity() {
+    post("address/address.do", {
       type: "city",
       provinceCode: this.data.provinces[this.data.provinceIndex].code
     }).then(res => {
@@ -101,7 +99,7 @@ Page({
       })
     })
   },
-  switchChange(e){
+  switchChange(e) {
     this.setData({
       isDefault: e.detail.value
     })
@@ -110,24 +108,19 @@ Page({
   /**
    * addClick确认添加地址
    */
-  addClick(){
-    post("address/wxUserAddress.do",{
+  addClick() {
+    post("address/wxUserAddress.do", {
       type: 1,
       provinceCode: this.data.provinces[this.data.provinceIndex].code,
       cityCode: this.data.cities[this.data.cityIndex].code,
-      districtCode: this.data.districts[this.data.districtIndex].code,
+      districCode: this.data.districts[this.data.districtIndex].code,
       addressDetail: this.data.addressDetail,
       isDefault: this.data.isDefault ? 1 : 0,
       receiveName: this.data.receiveName,
       receiveMobile: this.data.receiveMobile,
-    }).then(res => {
-      Toast("添加成功")
-      wx.navigateBack({
-        delta: 1
-      })
     })
   },
-  inputChange(e){
+  inputChange(e) {
     let name = e.currentTarget.dataset.name
     let value = e.detail.value
     this.setData({

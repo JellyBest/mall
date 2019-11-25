@@ -1,35 +1,34 @@
-<!--pages/products/products.wxml-->
-<view class="box">
-  <view class="prods">
-    <van-card custom-class="card" title-class="card-title" title="关于胡萝卜的产品介绍关于胡萝卜的产品介绍关于胡萝" price="48.88" thumb="{{ imageURL }}">
-      <view slot="bottom">
-        <view class="price">
-          <view class="price-box">
-           <van-step value="{{step}}" step="1" />
-          </view>
-          <van-icon name="delete" size="30rpx" />
-        </view>
-      </view>
-    </van-card>
-    <van-card custom-class="card" title-class="card-title" title="关于胡萝卜的产品介绍关于胡萝卜的产品介绍关于胡萝" price="48.88" thumb="{{ imageURL }}">
-      <view slot="bottom">
-        <view class="price">
-          <view class="price-box">
-           <van-step value="{{step}}" step="1" />
-          </view>
-          <van-icon name="delete" size="30rpx" />
-        </view>
-      </view>
-    </van-card>
+<view class="form">
+  <view class="cell">
+    <view>订单号码:</view>
+    <view>20191014036587</view>
   </view>
-  <view class="bottom">
-    <view>合计：￥888.00</view>
-    <view class="btn">去结算</view>
+  <view class="cell">
+    <view>下单时间:</view>
+    <view>2018-10-14 16：30：28</view>
   </view>
+  <view class="area">
+    <textarea placeholder="请进行描述..."></textarea>
+  </view>
+  <view class="upload-btn">
+    <image class="upload" src="../../assets/upload.png"></image>
+    <view>照片上传</view>
+  </view>
+  <view class="imgs">
+    <view class="img-item">
+      <image src=""></image>
+    </view>
+    <view class="img-item">
+      <image src=""></image>
+    </view>
+  </view>
+  <view class="back">
+    <view class="label">是否退款</view>
+    <van-radio-group class="radio-class" value="{{ radio }}" bind:change="onChange">
+      <van-radio checked-color="#89c02e" name="1" class="radio-left">是</van-radio>
+      <van-radio checked-color="#89c02e" name="2">否</van-radio>
+    </van-radio-group>
+  </view>
+  
 </view>
-<!-- <van-sidebar active="{{ active }}" bind:change="onChange">
-  <van-sidebar-item title="标签名称" />
-  <van-sidebar-item title="标签名称" />
-  <van-sidebar-item title="标签名称" />
-</van-sidebar> -->
 

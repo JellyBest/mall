@@ -3,5 +3,5 @@
     "van-area": "/miniprogram_npm/vant-weapp/area/index",
     "van-picker": "/miniprogram_npm/vant-weapp/picker/index"
   },
-  "navigationBarTitleText": "新增地址"
+  "navigationBarTitleText": "编辑地址"
 }

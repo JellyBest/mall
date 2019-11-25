@@ -10,6 +10,6 @@
   <van-icon name="delete" size="40rpx" />
 </view>
 <view class="search-tags">
-  <view class="tag">胡萝卜</view>
-  <view class="tag">胡萝卜</view>
+  <view class="tag" wx:for="{{searchNames}}" wx:key="{{index}}">{{item}}</view>
+  <!-- <view class="tag">胡萝卜</view> -->
 </view>

@@ -22,6 +22,7 @@ Page({
         // wx.setStorageSync("nonce", nonce)
         if (res.statusCode == 200 && res.data.respCode == "0000"){
           wx.setStorageSync("token", res.data.data.token)
+          wx.setStorageSync("code", res.data.data.userCode)
           this.goNext()
         }
         console.log(res,'login')

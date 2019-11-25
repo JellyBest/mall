@@ -1,5 +1,4 @@
-/* pages/newAddress/newAddress.wxss */
-
+/* pages/editAddress/editAddress.wxss */
 .cell {
   height: 80rpx;
   border-bottom: 1rpx solid #ccc;

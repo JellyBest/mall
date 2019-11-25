@@ -28,6 +28,9 @@ Page({
   getSearchNameList(){
     post("mini/getSearchNameList.do",{}).then(res => {
       console.log(res,'se')
+      this.setData({
+        searchNames: res.searchNames
+      })
     }).catch(err => {
       console.error(err)
     })

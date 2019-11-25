@@ -41,7 +41,6 @@ Page({
         page:1,
         size:3
       }).then(res => {
-        console.log(res,'rolist')
         resolve(res?res:"")
       }).catch(err => {
         console.error(err)

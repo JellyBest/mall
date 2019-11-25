@@ -9,6 +9,7 @@
     "pages/products/products",
     "pages/user/user",
     "pages/newAddress/newAddress",
+    "pages/editAddress/editAddress",
     "pages/search/search",
     "pages/searchResult/searchResult",
     "pages/order/order",

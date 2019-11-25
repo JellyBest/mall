@@ -50,3 +50,9 @@
   width: 33rpx;
   height: 33rpx;
 }
+.tag-box{
+  display: flex;
+}
+.tag-box view{
+  margin-right: 10rpx;
+}

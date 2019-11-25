@@ -31,33 +31,36 @@
 </view>
 <view class="ads">
   <view class="address"> 收货地址管理</view>
-  <view class="info">
-    <view>方智慧</view>
-    <view>18888888888</view>
-  </view>
-  <view class="detail">
-    <image class="add-img" src="../../assets/address.png"></image>
-    <view class="default-box">
-      <view>上海 上海市 黄浦区 小东门街道 关山大道248 弄1-4号3038室 门街道 关山大道248 </view>
-      <view class="ops">
-        <view class="default">
-          <image class="op-yes" src="../../assets/yes.png"></image>
-          <view>默认地址</view>
-        </view>
-        <view class="op-right">
-          <view class="edit-box">
-            <image class="edit" src="../../assets/edit.png"></image>
-            <view>编辑</view>
+  <view wx:for="{{addressList}}" wx:key="{{index}}">
+    <view class="info">
+      <view>{{item.receiveName}}</view>
+      <view>{{item.receiveMobile}}</view>
+    </view>
+    <view class="detail">
+      <image class="add-img" src="../../assets/address.png"></image>
+      <view class="default-box">
+        <view>{{item.provinceName}} {{item.cityName}} {{item.districtName}} {{item.addressDetail}}</view>
+        <view class="ops">
+          <view class="default">
+            <image hidden="{{item.isDefault == 0}}" class="op-yes" src="../../assets/yes.png"></image>
+            <view>默认地址</view>
           </view>
-          <view class="edit-box">
-            <image class="edit" src="../../assets/delete.png"></image>
-            <view>删除</view>
+          <view class="op-right">
+            <view class="edit-box" bindtap="goToEdit">
+              <image class="edit" src="../../assets/edit.png"></image>
+              <view>编辑</view>
+            </view>
+            <view class="edit-box">
+              <image class="edit" src="../../assets/delete.png"></image>
+              <view>删除</view>
+            </view>
           </view>
         </view>
       </view>
     </view>
   </view>
+
   <view class="btn-box">
-      <view class="submit btn" bindtap="newAddress">新建地址</view>
+    <view class="submit btn" bindtap="newAddress">新建地址</view>
   </view>
 </view>

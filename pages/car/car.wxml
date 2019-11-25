@@ -1,7 +1,20 @@
 <!--pages/car/car.wxml-->
 <view class="box">
   <view class="prods">
-    <van-card custom-class="card" title-class="card-title" title="关于胡萝卜的产品介绍关于胡萝卜的产品介绍关于胡萝" price="48.88" thumb="{{ imageURL }}">
+    <van-card wx:for="{{userProductDtoList}}" wx:key="{{item.id}}" custom-class="card" title-class="card-title" title="{{item.productName}}" price="{{item.price}}" thumb="{{ imageURL }}">
+      <view slot="bottom">
+        <view class="price">
+          <view class="price-box">
+           <van-step data-num="{{item.storeNum}}" data-index="{{index}}" data-procode="{{item.productCode}}"  value="{{item.amount}}" bind:change="stepChange" step="1" />
+           <view class="stand">{{item.standArd}}</view>
+          </view>
+          <view data-code="{{item.productCode}}" bindtap="deletePro">
+            <van-icon name="delete" size="30rpx" />
+          </view>
+        </view>
+      </view>
+    </van-card>
+    <!-- <van-card custom-class="card" title-class="card-title" title="关于胡萝卜的产品介绍关于胡萝卜的产品介绍关于胡萝" price="48.88" thumb="{{ imageURL }}">
       <view slot="bottom">
         <view class="price">
           <view class="price-box">
@@ -10,22 +23,13 @@
           <van-icon name="delete" size="30rpx" />
         </view>
       </view>
-    </van-card>
-    <van-card custom-class="card" title-class="card-title" title="关于胡萝卜的产品介绍关于胡萝卜的产品介绍关于胡萝" price="48.88" thumb="{{ imageURL }}">
-      <view slot="bottom">
-        <view class="price">
-          <view class="price-box">
-           <van-step value="{{step}}" step="1" />
-          </view>
-          <van-icon name="delete" size="30rpx" />
-        </view>
-      </view>
-    </van-card>
+    </van-card> -->
   </view>
   <view class="bottom">
     <view>合计：￥888.00</view>
     <view class="btn">去结算</view>
   </view>
+  <van-toast id="van-toast" />
 </view>
 <!-- <van-sidebar active="{{ active }}" bind:change="onChange">
   <van-sidebar-item title="标签名称" />

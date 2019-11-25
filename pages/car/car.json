@@ -4,6 +4,7 @@
     "van-card": "/miniprogram_npm/vant-weapp/card/index",
     "van-tag": "/miniprogram_npm/vant-weapp/tag/index",
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
-    "van-step": "/miniprogram_npm/vant-weapp/stepper/index"
+    "van-step": "/miniprogram_npm/vant-weapp/stepper/index",
+    "van-toast": "/miniprogram_npm/vant-weapp/toast/index"
   }
 }

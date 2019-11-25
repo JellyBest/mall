@@ -29,15 +29,16 @@ export function post(url,data){
         //更新nonce
         // const nonce = res.header.nonce
         // wx.setStorageSync("nonce", nonce)
+        console.log(res,'res')
         if(res.statusCode == 200){
           if (res.data.respCode == "0000") {
             resolve(res.data)
           }
           else if (res.data.respCode == "23249") {
-            reject(res)
+            reject(res.data)
             console.error("token 过期")
           } else {
-            reject(res)
+            reject(res.data)
           }
         }else{
           console.error(res)
