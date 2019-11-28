@@ -9,7 +9,7 @@
 </swiper>
 <view class="prod-container">
   <view class="cate" wx:for="{{newPros}}" wx:key="{{item.id}}" hidden="{{item =='' || item.moduleType == 'LBPIC' || item.total == 0}}">
-    <view class="title">
+    <view class="title" data-index="{{index}}" bindtap="goToMore">
       <view>{{item.moduleName}}</view>
       <image src="../../assets/more.png" class="more"></image>
     </view>

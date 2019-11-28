@@ -1,0 +1,30 @@
+<!--pages/morePros/morePros.wxml-->
+<view class="box">
+  <view class="prods">
+    <van-card wx:for="{{productDtoList}}" wx:key="{{index}}" custom-class="card" title-class="card-title" title="{{item.productName}}" thumb-class="pro-img" thumb="{{ imageURL }}">
+      <view slot="bottom">
+        <view class="price">
+          <view class="price-box">
+            <view class="red-price">¥{{item.price}}</view>
+            <view class="grey-price">{{item.oldPrice}}元</view>
+          </view>
+          <image class="car" src="../../assets/car.png"></image>
+        </view>
+      </view>
+    </van-card>
+    <!-- <van-card custom-class="card" title-class="card-title" title="关于胡萝卜的产品介绍关于胡萝卜的产品介绍关于胡萝" thumb="{{ imageURL }}">
+      <view slot="bottom">
+        <view class="price">
+          <view class="price-box">
+            <view class="red-price">¥48.88</view>
+            <view class="grey-price">58.90元</view>
+          </view>
+          <image class="car" src="../../assets/car.png"></image>
+        </view>
+      </view>
+    </van-card> -->
+  </view>
+</view>
+<view hidden="{{showBtm}}" class="pull-btm">{{btmData}}</view>
+
+

@@ -12,6 +12,11 @@ Page({
     step:2,
     imageURL: "../../../assets/carrot.png",
   },
+  clickBtn(e){
+    wx.navigateTo({
+      url: '/pages/order/order?type='+ 1,
+    })
+  },
   deletePro(e){
     let productCode = e.currentTarget.dataset.code
     post("shopCar/removeProFromShopCar.do",{

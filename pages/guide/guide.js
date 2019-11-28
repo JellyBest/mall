@@ -1,4 +1,7 @@
 // pages/guide/guide.js
+// const webDomain = "http://106.54.236.248/hongyi-api/"
+// const testDomain = "http://monkeyhao.easy.echosite.cn/api/"
+import { domain } from "../../api/base.js"
 Page({
 
   /**
@@ -6,13 +9,14 @@ Page({
    */
   data: {
     code: "",
+    
   },
   code: "",
   fullUserInfo: {},
   getLogin(){
     wx.request({
       method: 'POST',
-      url: 'http://monkeyhao.easy.echosite.cn/api/login/loginByWeiXin.do',
+      url: domain + 'login/loginByWeiXin.do',
       data: {
         code: this.code,
         userInfo: this.fullUserInfo

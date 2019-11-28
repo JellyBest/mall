@@ -1,4 +1,4 @@
-/* pages/car/car.wxss */
+/* pages/morePros/morePros.wxss */
 .box{
   display: flex;
 }
@@ -17,7 +17,6 @@
 }
 .prods{
   width: 750rpx;
-  padding-bottom: 90rpx;
   box-sizing: border-box;
 }
 .prods .card{
@@ -31,6 +30,12 @@
   font-size: 24rpx;
   color: #090909;
 }
+.card .pro-img{
+  
+}
+.card .van-card_thumb{
+  width: 344rpx;
+}
 .price{
   margin-top: 58rpx;
   display: flex;
@@ -40,10 +45,6 @@
 .price-box{
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-}
-.stand{
-  margin-left: 10rpx;
 }
 .red-price{
   font-size: 24rpx;
@@ -72,7 +73,7 @@
   bottom: 0;
   left: 0;
 }
-.btn.van-button{
+.btn{
   width: 170rpx;
 	height: 80rpx;
   color: #fff;
@@ -81,4 +82,9 @@
   line-height: 80rpx;
   border-radius: 20rpx;
   background-color: #dd666a;
+}
+.pull-btm{
+  text-align: center;
+  color: #666;
+  line-height: 80rpx;
 }

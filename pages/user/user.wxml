@@ -1,5 +1,6 @@
 <!--pages/user/user.wxml-->
 <view class="top">
+  <image class="mi" src="../../assets/mine-bgc.png"></image>
   <view class="card">
     <image class="head" src="../../assets/head.png"></image>
     <view class="name">我是小清啊</view>
@@ -8,59 +9,67 @@
 <view class="order">
   <view class="order-title">
     <view class="left">我的订单</view>
-    <view class="right">查看全部订单 ></view>
+    <!-- <view class="right">查看全部订单 ></view> -->
   </view>
   <view class="grid">
-    <view class="grid-item">
+    <view class="grid-item" data-step="0"  bindtap="goToMyOrder">
       <image class="media-img" src="../../assets/pay.png"></image>
       <view class="media-txt">待付款</view>
     </view>
     <view class="grid-item">
-      <image class="media-img" src="../../assets/receive.png"></image>
+      <image class="media-img" data-step="1" bindtap="goToMyOrder" src="../../assets/receive.png"></image>
       <view class="media-txt">待收货</view>
     </view>
     <view class="grid-item">
-      <image class="media-img" src="../../assets/received.png"></image>
+      <image class="media-img" data-step="2" bindtap="goToMyOrder" src="../../assets/received.png"></image>
       <view class="media-txt">已收货</view>
     </view>
     <view class="grid-item">
-      <image class="media-img" src="../../assets/service.png"></image>
+      <image class="media-img" data-step="3" bindtap="goToMyOrder" src="../../assets/service.png"></image>
       <view class="media-txt">售后</view>
     </view>
   </view>
 </view>
-<view class="ads">
-  <view class="address"> 收货地址管理</view>
-  <view wx:for="{{addressList}}" wx:key="{{index}}">
-    <view class="info">
-      <view>{{item.receiveName}}</view>
-      <view>{{item.receiveMobile}}</view>
-    </view>
-    <view class="detail">
-      <image class="add-img" src="../../assets/address.png"></image>
-      <view class="default-box">
-        <view>{{item.provinceName}} {{item.cityName}} {{item.districtName}} {{item.addressDetail}}</view>
-        <view class="ops">
-          <view class="default">
-            <image hidden="{{item.isDefault == 0}}" class="op-yes" src="../../assets/yes.png"></image>
-            <view>默认地址</view>
-          </view>
-          <view class="op-right">
-            <view class="edit-box" bindtap="goToEdit">
-              <image class="edit" src="../../assets/edit.png"></image>
-              <view>编辑</view>
-            </view>
-            <view class="edit-box">
-              <image class="edit" src="../../assets/delete.png"></image>
-              <view>删除</view>
+<van-collapse value="{{ activeNames }}" bind:change="onChange">
+  <van-collapse-item  name="1">
+    <view class="address" slot="title"> 收货地址管理</view>
+    <view class="ads">
+      <view wx:for="{{addressList}}" wx:key="{{index}}">
+        <view class="info">
+          <view>{{item.receiveName}}</view>
+          <view>{{item.receiveMobile}}</view>
+        </view>
+        <view class="detail">
+          <image class="add-img" src="../../assets/address.png"></image>
+          <view class="default-box">
+            <view>{{item.provinceName}} {{item.cityName}} {{item.districtName}} {{item.addressDetail}}</view>
+            <view class="ops">
+              <view class="default">
+                <image hidden="{{item.isDefault == 0}}" class="op-yes" src="../../assets/yes.png"></image>
+                <image hidden="{{item.isDefault == 1}}" class="op-yes" src="../../assets/no.png"></image>
+                <view>默认地址</view>
+              </view>
+              <view class="op-right">
+                <view class="edit-box" data-code="{{item.receiveCode}}" bindtap="goToEdit">
+                  <image class="edit" src="../../assets/edit.png"></image>
+                  <view>编辑</view>
+                </view>
+                <view class="edit-box" data-code="{{item.receiveCode}}" bindtap="deleteAddress">
+                  <image class="edit" src="../../assets/delete.png"></image>
+                  <view>删除</view>
+                </view>
+              </view>
             </view>
           </view>
         </view>
       </view>
-    </view>
-  </view>
 
-  <view class="btn-box">
-    <view class="submit btn" bindtap="newAddress">新建地址</view>
-  </view>
-</view>
+      <view class="btn-box">
+        <view class="submit btn" bindtap="newAddress">新建地址</view>
+      </view>
+
+    </view>
+  </van-collapse-item>
+</van-collapse>
+
+<van-toast id="van-toast" />

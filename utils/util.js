@@ -13,7 +13,15 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+/**
+ * 分转换成元 1角=10分 1元=100分
+ */
+const moneyFormat = amount => {
+  console.log(amount,'amount')
+  return amount/100
+}
 
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  moneyFormat: moneyFormat
 }

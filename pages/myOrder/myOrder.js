@@ -1,4 +1,6 @@
 // pages/myOrder/myOrder.js
+import { post } from '../../api/http.js'
+import { moneyFormat } from '../../utils/util.js'
 Page({
 
   /**
@@ -7,12 +9,22 @@ Page({
   data: {
 
   },
-
+  step: "",
+  pageNo: 1,
+  pageSize: 10,
+  async getOrderList(){
+    let ret = await post("/order/orderList.do",{
+      type: 0,
+      page: this.pageNo,
+      size: this.pageSize 
+    })
+    console.log(ret,'tt')
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.step = options.step
   },
 
   /**
@@ -26,7 +38,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getOrderList()
   },
 
   /**

@@ -1,5 +1,7 @@
 // pages/home/home.js
 import { post } from '../../api/http.js'
+import { moneyFormat } from '../../utils/util.js'
+console.log(moneyFormat)
 Page({
 
   /**
@@ -13,6 +15,7 @@ Page({
     interval: 2000,
     duration: 500,
     newPros: [],
+    
     productList:[
       { 
         productId: "1",
@@ -33,6 +36,14 @@ Page({
         productName: "土豆"
       }
     ]
+  },
+  moduleCodeList: [], 
+  goToMore(e){
+    let index = e.currentTarget.dataset.index
+    let moduleCode = this.moduleCodeList[index]
+    wx.navigateTo({
+      url: '/pages/morePros/morePros?moduleCode=' + moduleCode,
+    })
   },
   getPro(code){
     return new Promise( (resolve,reject) => {
@@ -55,8 +66,16 @@ Page({
       return this.getPro(item)
     })
     Promise.all(arrMap).then(res => {
-      console.log(res)
-      this.data.newPros = res
+      console.log(res,'nennnnn')
+      this.data.newPros = res.map(item => {
+        if (item.productDtoList.length > 0){
+          item.productDtoList = item.productDtoList.map(value => {
+            value.price = moneyFormat(value.price)
+            return value
+          })
+        }
+        return item
+      })
       this.setData({
         newPros: this.data.newPros
       })
@@ -69,17 +88,11 @@ Page({
     post("mini/getModuleList.do",{}).then(res => {
       console.log(res,'list')
       let data = res.moduleDtoList
-      // let newPros = data.filter(item => {
-      //   return (item.moduleType == "NEW_PRO") || (item.moduleType == "BOSS_TJ")
-      // })
-      // this.setData({
-      //   newPros: data
-      // })
       let arr = data.map(item => {
         return item.moduleCode
       })
+      this.moduleCodeList = arr
       this.getProducts(arr)
-
     })
   },
 
@@ -89,7 +102,6 @@ Page({
       page: 1,
       size: 10
     }).then(res => {
-      console.log(res)
     })
   },
 

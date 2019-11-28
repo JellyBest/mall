@@ -12,6 +12,7 @@
     "pages/editAddress/editAddress",
     "pages/search/search",
     "pages/searchResult/searchResult",
+    "pages/morePros/morePros",
     "pages/order/order",
     "pages/myOrder/myOrder",
     "pages/soldService/soldService",

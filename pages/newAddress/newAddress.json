@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "van-area": "/miniprogram_npm/vant-weapp/area/index",
-    "van-picker": "/miniprogram_npm/vant-weapp/picker/index"
+    "van-picker": "/miniprogram_npm/vant-weapp/picker/index",
+    "van-toast": "/miniprogram_npm/vant-weapp/toast/index"
   },
   "navigationBarTitleText": "新增地址"
 }

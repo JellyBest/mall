@@ -76,7 +76,7 @@
   display: flex;
   font-size: 24rpx;
 }
-.btm-btn{
+.btm-btn.van-button{
   margin-left: 90rpx;
   width: 170rpx;
 	height: 80rpx;

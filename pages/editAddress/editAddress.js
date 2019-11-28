@@ -1,5 +1,6 @@
 // pages/editAddress/editAddress.js
 import { post } from '../../api/http.js'
+const Toast = getApp().globalData.Toast
 const citys = {
   '浙江': ['杭州', '宁波', '温州', '嘉兴', '湖州'],
   '福建': ['福州', '厦门', '莆田', '三明', '泉州']
@@ -26,18 +27,46 @@ Page({
     array: ['美国', '中国', '巴西', '日本'],
     index: null,
   },
+  receiveCode: "",
+  provinceName: "",
+  cityName: "",
+  districtName: "",
+  getDetail(){
+    post("address/wxUserAddressDetail.do",{
+      receiveCode: this.receiveCode
+    }).then(res => {
+      let ret = res.receive
+      this.setData({
+        receiveName: ret.receiveName,
+        addressDetail: ret.addressDetail,
+        receiveMobile: ret.receiveMobile,
+        isDefault: ret.isDefault
+      })
+      this.provinceName = ret.provinceName
+      this.cityName = ret.cityName
+      this.districtName = ret.districtName
+
+      this.getProvince()
+    })
+  },
   bindProvinceChange(e) {
     this.setData({
-      provinceIndex: e.detail.value
+      provinceIndex: e.detail.value,
+      districtIndex: null,
+      cityIndex: null
     })
+    this.cityName = ""
+    this.districtName = ""
     this.getCity()
     console.log(e, 'p')
   },
   bindCityChange(e) {
     this.setData({
-      cityIndex: e.detail.value
+      cityIndex: e.detail.value,
+      districtIndex: null
     })
     // this.getCity()
+    this.districtName = ""
     this.getDistrict()
     console.log(e, 'p')
   },
@@ -67,6 +96,15 @@ Page({
         provinces: res.addressList,
         provinceArray: arr
       })
+      if(this.provinceName){
+        let index = arr.findIndex(item => {
+          return item == this.provinceName
+        })
+        this.setData({
+          provinceIndex: index
+        })
+        this.getCity()
+      }
     }).catch(err => {
       console.error(err)
     })
@@ -83,6 +121,15 @@ Page({
         cities: res.addressList,
         cityArray: arr
       })
+      if(this.cityName){
+        let index = arr.findIndex(item => {
+          return item == this.cityName
+        })
+        this.setData({
+          cityIndex: index
+        })
+        this.getDistrict()
+      }
     })
   },
   getDistrict() {
@@ -97,13 +144,20 @@ Page({
         districts: res.addressList,
         districtArray: arr
       })
+      if (this.districtName) {
+        let index = arr.findIndex(item => {
+          return item == this.districtName
+        })
+        this.setData({
+          districtIndex: index
+        })
+      }
     })
   },
   switchChange(e) {
     this.setData({
       isDefault: e.detail.value
     })
-    console.log(e)
   },
   /**
    * addClick确认添加地址
@@ -111,13 +165,19 @@ Page({
   addClick() {
     post("address/wxUserAddress.do", {
       type: 1,
+      receiveCode: this.receiveCode,
       provinceCode: this.data.provinces[this.data.provinceIndex].code,
       cityCode: this.data.cities[this.data.cityIndex].code,
-      districCode: this.data.districts[this.data.districtIndex].code,
+      districtCode: this.data.districts[this.data.districtIndex].code,
       addressDetail: this.data.addressDetail,
       isDefault: this.data.isDefault ? 1 : 0,
       receiveName: this.data.receiveName,
       receiveMobile: this.data.receiveMobile,
+    }).then(res => {
+      Toast("编辑成功")
+      wx.navigateBack({
+        delta: 1
+      })
     })
   },
   inputChange(e) {
@@ -133,7 +193,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getProvince()
+    this.receiveCode = options.code
+    console.log(options)
+    this.getDetail()
+    
   },
 
   /**

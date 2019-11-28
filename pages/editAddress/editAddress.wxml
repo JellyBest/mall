@@ -41,9 +41,10 @@
 <view class="cell default">
   <view class="default-label">设为默认地址</view>
   <view>
-    <switch bindchange="switchChange"></switch>
+    <switch checked="{{isDefault}}" bindchange="switchChange"></switch>
   </view>
 </view>
 <view class="btn-box">
-  <view class="submit btn" bindtap="addClick">确定添加</view>
+  <view class="submit btn" bindtap="addClick">确定编辑</view>
 </view>
+<van-toast id="van-toast" />

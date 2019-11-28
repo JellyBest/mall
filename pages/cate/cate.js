@@ -1,4 +1,5 @@
 // pages/cate/cate.js
+const Toast = getApp().globalData.Toast
 import { post } from '../../api/http.js'
 Page({
 
@@ -27,7 +28,7 @@ Page({
       productCode: code,
       amount: 1
     }).then(res => {
-        
+        Toast("添加成功")
     }).catch(err=>{
       console.error(err)
     })

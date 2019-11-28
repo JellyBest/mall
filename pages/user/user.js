@@ -1,22 +1,59 @@
 // pages/user/user.js
 import { post } from '../../api/http.js'
+const Toast = getApp().globalData.Toast
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    addressList: []
+    addressList: [],
+    activeNames: ['1']
+  },
+  goToMyOrder(e){
+    let step = e.currentTarget.dataset.step
+    wx.navigateTo({
+      url: '/pages/myOrder/myOrder?step='+step,
+    })
+  },
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail
+    });
   },
   newAddress(){
     wx.navigateTo({
       url: '/pages/newAddress/newAddress',
     })
   },
-  goToEdit(){
+  goToEdit(e){
+    let code = e.currentTarget.dataset.code
+    console.log(code)
     wx.navigateTo({
-      url: '/pages/editAddress/editAddress',
+      url: '/pages/editAddress/editAddress?code='+ code,
     })
+  },
+  deleteAddress(e){
+    let code = e.currentTarget.dataset.code
+    wx.showModal({
+      title: '提示',
+      content: '确认删除该地址？',
+      confirmText: '确定',
+      cancelText: '取消',
+      success: result => {
+        console.log(result)
+        if (result.confirm){
+          post("address/wxDeletedAddress.do", {
+            receiveCode: code
+          }).then(res => {
+            Toast('删除成功')
+            this.getAddressList()
+          })
+        }
+        
+      }
+    })
+    
   },
   getAddressList(){
     post("address/wxReceiveList.do",{

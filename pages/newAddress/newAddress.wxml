@@ -47,3 +47,4 @@
 <view class="btn-box">
   <view class="submit btn" bindtap="addClick">确定添加</view>
 </view>
+<van-toast id="van-toast" />
