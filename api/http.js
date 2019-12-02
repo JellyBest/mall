@@ -2,7 +2,7 @@ import {domain} from './base.js'
 //加密常量
 import {apiConst} from './config.js'
 //sha256加密算法
-import { sha256_digest } from './sha256.js'
+import { sha256 } from './sha256.js'
 //post请求
 export function post(url,data){
   const param = {
@@ -13,11 +13,12 @@ export function post(url,data){
   const nonce = wx.getStorageSync("nonce")
   const timeStamp = new Date().getTime()
   let reqStr = JSON.stringify(data) + "|" + apiConst + "|" + token + "|" + timeStamp
-  let sign = sha256_digest(reqStr)
+  let sign = sha256(reqStr)
   return new Promise((resolve, reject) => {
     wx.request({
       method: 'POST',
       header: {
+        "content-type": "application/json;charset=UTF-8",
         token,
         reqTimeStamp: timeStamp,
         // nonce,
