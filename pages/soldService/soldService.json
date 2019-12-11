@@ -1,7 +1,8 @@
 {
   "usingComponents": {
-    "van-radio": "/miniprogram_npm/vant-weapp/radio/index",
-    "van-radio-group": "/miniprogram_npm/vant-weapp/radio-group/index"
+    "van-uploader": "/miniprogram_npm/@vant/weapp/uploader/index",
+    "van-radio": "/miniprogram_npm/@vant/weapp/radio/index",
+    "van-radio-group": "/miniprogram_npm/@vant/weapp/radio-group/index"
   },
   "navigationBarTitleText": "售后"
 }

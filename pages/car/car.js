@@ -1,5 +1,6 @@
 // pages/car/car.js
-import { post } from '../../api/http.js'
+import { post, getImg } from '../../api/http.js'
+import { moneyFormat } from '../../utils/util.js'
 const app = getApp()
 const Toast = app.globalData.Toast
 Page({
@@ -11,6 +12,7 @@ Page({
     userProductDtoList: [], 
     step:2,
     imageURL: "../../../assets/carrot.png",
+    showDefault:false
   },
   clickBtn(e){
     wx.navigateTo({
@@ -37,7 +39,8 @@ Page({
     post("shopCar/putProToShopCar.do",{
       userCode: wx.getStorageSync("code"),
       productCode,
-      amount: value
+      amount: value,
+      putType: "fromCar"
     }).then(res => {
       console.log(res)
     }).catch(err => {
@@ -52,7 +55,22 @@ Page({
     post("shopCar/getShopCarProductList.do",{
       userCode: wx.getStorageSync("code")
     }).then(res => {
-      this.setData({ userProductDtoList: res.userProductDtoList})
+      let data = res.userProductDtoList
+      data.map(item => {
+        item.titlePic = getImg(item.titlePic)
+        item.price = moneyFormat(item.price)
+        return item
+      })
+      if (data.length == 0) {
+        this.setData({
+          showDefault: true
+        })
+      } else {
+        this.setData({
+          showDefault: false
+        })
+      }
+      this.setData({ userProductDtoList: data})
     }).catch(err => {
       Toast.fail(err.respInfo);
     })

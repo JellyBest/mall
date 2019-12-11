@@ -2,6 +2,8 @@
   "usingComponents": {
   },
   "pages": [
+    "pages/index/index",
+    "pages/store/store",
     "pages/guide/guide",
     "pages/home/home",
     "pages/cate/cate",
@@ -16,7 +18,6 @@
     "pages/order/order",
     "pages/myOrder/myOrder",
     "pages/soldService/soldService",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {

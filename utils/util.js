@@ -1,4 +1,5 @@
-const formatTime = date => {
+const formatTime = timeStamp => {
+  let date = new Date(timeStamp)
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()

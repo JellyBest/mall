@@ -1,13 +1,13 @@
 // pages/home/home.js
-import { post } from '../../api/http.js'
+import { post, getImg } from '../../api/http.js'
 import { moneyFormat } from '../../utils/util.js'
-console.log(moneyFormat)
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    swipeItems: [],
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     indicatorDots: true,
     vertical: false,
@@ -15,7 +15,6 @@ Page({
     interval: 2000,
     duration: 500,
     newPros: [],
-    
     productList:[
       { 
         productId: "1",
@@ -67,17 +66,26 @@ Page({
     })
     Promise.all(arrMap).then(res => {
       console.log(res,'nennnnn')
+      let swipe = []
       this.data.newPros = res.map(item => {
         if (item.productDtoList.length > 0){
           item.productDtoList = item.productDtoList.map(value => {
+            
+            value.titlePic = getImg(value.titlePic);
             value.price = moneyFormat(value.price)
+            if (item.moduleType == 'LBPIC') {
+              value.bigPicUrl = getImg(value.bigPicUrl)
+              swipe.push(value)
+            }
             return value
           })
         }
         return item
       })
+      console.log(swipe,'swipeee')
       this.setData({
-        newPros: this.data.newPros
+        newPros: this.data.newPros,
+        swipeItems: swipe
       })
     })
   },

@@ -1,4 +1,4 @@
-import { post } from '../../api/http.js'
+import { post, getImg } from '../../api/http.js'
 import { moneyFormat } from '../../utils/util.js'
 Page({
 
@@ -29,6 +29,7 @@ Page({
     ret.productDtoList = ret.productDtoList.map(item => {
       item.price = moneyFormat(item.price)
       item.oldPrice = moneyFormat(item.oldPrice)
+      item.titlePic = getImg(item.titlePic);
       return item
     })
     this.data.productDtoList = this.data.productDtoList.concat(ret.productDtoList)

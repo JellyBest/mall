@@ -5,7 +5,7 @@ import {
 import {
   Validate
 } from '../../utils/validate.js'
-import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog'
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
 const app = getApp()
 const Toast = app.globalData.Toast
 

@@ -7,8 +7,8 @@
     </view>
   </view>
   <view class="sort"></view>
-  <view class="prods">
-    <van-card wx:for="{{proList}}" wx:key="{{index}}" custom-class="card" title-class="card-title" title="{{item.productName}}" thumb="{{ imageURL }}">
+  <view class="prods" hidden="{{proList.length == 0}}">
+    <van-card wx:for="{{proList}}" wx:key="{{index}}" custom-class="card" title-class="card-title" title="{{item.productName}}" thumb="{{ item.titlePic }}">
       <view class="tag-box" slot="desc">
         <view hidden="{{item.isHot == '1'}}">
           <van-tag  round type="danger" plain>爆款</van-tag>
@@ -53,7 +53,11 @@
       </view>
     </van-card> -->
   </view>
+  <view class="small-default" hidden="{{!showDefault}}" >
+    <default hidden="{{!showDefault}}" textStr="暂无商品信息哦！"></default>
+  </view>
 </view>
+
 <!-- <van-sidebar active="{{ active }}" bind:change="onChange">
   <van-sidebar-item title="标签名称" />
   <van-sidebar-item title="标签名称" />

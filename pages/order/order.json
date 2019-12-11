@@ -1,8 +1,8 @@
 {
   "usingComponents": {
-    "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
-    "van-card": "/miniprogram_npm/vant-weapp/card/index",
-    "van-button": "/miniprogram_npm/vant-weapp/button/index"
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
+    "van-card": "/miniprogram_npm/@vant/weapp/card/index",
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index"
   },
   "navigationBarTitleText": "确认订单"
 }

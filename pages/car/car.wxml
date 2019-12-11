@@ -1,7 +1,7 @@
 <!--pages/car/car.wxml-->
-<view class="box">
+<view class="box"  hidden="{{userProductDtoList.length == 0}}">
   <view class="prods">
-    <van-card wx:for="{{userProductDtoList}}" wx:key="{{item.id}}" custom-class="card" title-class="card-title" title="{{item.productName}}" price="{{item.price}}" thumb="{{ imageURL }}">
+    <van-card wx:for="{{userProductDtoList}}" wx:key="{{item.id}}" custom-class="card" title-class="card-title" title="{{item.productName}}" price="{{item.price}}" thumb="{{ item.titlePic }}">
       <view slot="bottom">
         <view class="price">
           <view class="price-box">
@@ -26,14 +26,10 @@
     </van-card> -->
   </view>
   <view class="bottom">
-    <view>合计：￥888.00</view>
+    <!-- <view>合计：￥888.00</view> -->
     <!-- <view  class="btn">去结算</view> -->
     <van-button custom-class="btn" bindclick="clickBtn" color="#dd666a">去结算</van-button>
   </view>
   <van-toast id="van-toast" />
 </view>
-<!-- <van-sidebar active="{{ active }}" bind:change="onChange">
-  <van-sidebar-item title="标签名称" />
-  <van-sidebar-item title="标签名称" />
-  <van-sidebar-item title="标签名称" />
-</van-sidebar> -->
+<default hidden="{{!showDefault}}" textStr="购物车还没有商品哦！"></default>

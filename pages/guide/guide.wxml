@@ -7,5 +7,5 @@
     <view class='circle .bgc2'></view>
     <view class='circle .bgc3'></view>
   </view>
-  <button class="author" bindgetuserinfo="getUserInfo" open-type="getUserInfo">点击进入</button>
+  <!-- <button class="author" bindgetuserinfo="getUserInfo" open-type="getUserInfo">点击进入</button> -->
 </view>

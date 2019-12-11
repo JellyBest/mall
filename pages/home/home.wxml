@@ -1,9 +1,9 @@
 <!--pages/home/home.wxml-->
 <search-box></search-box>
 <swiper indicator-dots="{{indicatorDots}}" indicator-color="#ccc" indicator-active-color="#fff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{background}}" wx:key="*this">
+  <block wx:for="{{swipeItems}}" wx:key="*this">
     <swiper-item>
-      <image src="../../assets/banner.png" mode="aspectFit" class="banner"></image>
+      <image src="{{item.bigPicUrl}}" mode="aspectFit" class="banner"></image>
     </swiper-item>
   </block>
 </swiper>
@@ -15,14 +15,14 @@
     </view>
     <view class="new-list" hidden="{{item.moduleType != 'NEW_PRO'}}">
       <view class="new-prod" wx:for="{{item.productDtoList}}" wx:key="{{item.productId}}">
-        <image class="small-pic" src="../../assets/banner.png"></image>
+        <image class="small-pic" src="{{item.titlePic}}"></image>
         <view class="name">{{item.productName}}</view>
         <view class="price">￥{{item.price}}</view>
       </view>
     </view>
     <view class="new-list shop" hidden="{{item.moduleType == 'NEW_PRO'}}">
       <view class="shop-prod" wx:for="{{item.productDtoList}}" wx:key="{{item.productId}}">
-        <image class="small-pic" src="../../assets/banner.png"></image>
+        <image class="small-pic" src="{{item.titlePic}}"></image>
       </view>
     </view>
   </view>

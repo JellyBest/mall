@@ -2,6 +2,7 @@
 // const webDomain = "http://106.54.236.248/hongyi-api/"
 // const testDomain = "http://monkeyhao.easy.echosite.cn/api/"
 import { domain } from "../../api/base.js"
+let app = getApp()
 Page({
 
   /**
@@ -27,6 +28,7 @@ Page({
         if (res.statusCode == 200 && res.data.respCode == "0000"){
           wx.setStorageSync("token", res.data.data.token)
           wx.setStorageSync("code", res.data.data.userCode)
+          app.globalData.userInfo = res.data.data.userInfo
           this.goNext()
         }
         console.log(res,'login')
@@ -96,7 +98,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.initPage()
+    // this.initPage()
+    setTimeout(() => {
+      this.goNext()
+    }, 1000)
   },
 
   /**

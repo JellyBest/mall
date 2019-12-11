@@ -1,5 +1,6 @@
 // pages/user/user.js
 import { post } from '../../api/http.js'
+const app = getApp()
 const Toast = getApp().globalData.Toast
 Page({
 
@@ -13,7 +14,7 @@ Page({
   goToMyOrder(e){
     let step = e.currentTarget.dataset.step
     wx.navigateTo({
-      url: '/pages/myOrder/myOrder?step='+step,
+      url: '/pages/myOrder/myOrder?type='+step,
     })
   },
   onChange(event) {
@@ -65,11 +66,16 @@ Page({
       console.error(err)
     })
   },
+  initUserInfo(){
+    this.setData({
+      userInfo: app.globalData.userInfo
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.initUserInfo()
   },
 
   /**

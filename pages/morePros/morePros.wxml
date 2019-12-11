@@ -1,7 +1,7 @@
 <!--pages/morePros/morePros.wxml-->
 <view class="box">
   <view class="prods">
-    <van-card wx:for="{{productDtoList}}" wx:key="{{index}}" custom-class="card" title-class="card-title" title="{{item.productName}}" thumb-class="pro-img" thumb="{{ imageURL }}">
+    <van-card wx:for="{{productDtoList}}" wx:key="{{index}}" custom-class="card" title-class="card-title" title="{{item.productName}}" thumb-class="pro-img" thumb="{{ item.titlePic }}">
       <view slot="bottom">
         <view class="price">
           <view class="price-box">

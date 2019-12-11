@@ -4,6 +4,7 @@
   "description": "mall weapp",
   "main": "app.js",
   "dependencies": {
+    "@vant/weapp": "^1.0.0",
     "vant-weapp": "^0.5.23"
   },
   "devDependencies": {},

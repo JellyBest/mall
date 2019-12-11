@@ -1,44 +1,40 @@
 <!--pages/myOrder/myOrder.wxml-->
-<tab-bar></tab-bar>
-<default hidden="{{true}}" textStr="您暂时没有订单信息哦！"></default>
-<view class="order-box">
-  <view class="item">
+<tab-bar active="{{active}}" bind:changeTab="changeTab"></tab-bar>
+
+<view class="order-box" hidden="{{active != '0'}}">
+  <default hidden="{{orderDtoList.length != 0}}" textStr="您暂时没有订单信息哦！"></default>
+  <view class="item" wx:for="{{orderDtoList}}" wx:key="{{item.orderNo}}">
     <view class="status">
       <view class="left">
-        <view class="desc">已收货</view>
-        <view class="date">2019-10-14</view>
+        <view class="desc">待付款</view>
+        <view class="date">{{item.orderTime}}</view>
       </view>
-      <van-icon name="arrow" size="20rpx" />
+      <view>
+        <van-icon name="arrow" size="20rpx" />
+      </view>
+      
     </view>
-    <view class="list">
+    <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
       <view class="left">
         <image src="../../assets/carrot.png" class="good"></image>
-        <view class="name">胡萝卜</view>
-        <view class="weight">20kg</view>
-        <view class="bagWeight">50g/份</view>
+        <view class="name">{{child.productName}}</view>
+        <!-- <view class="weight">20kg</view> -->
+        <view class="bagWeight">{{child.standard}}</view>
       </view>
-      <view>×1</view>
+      <view>×{{child.num}}</view>
     </view>
-    <view class="list">
-      <view class="left">
-        <image src="../../assets/carrot.png" class="good"></image>
-        <view class="name">胡萝卜</view>
-        <view class="weight">20kg</view>
-        <view class="bagWeight">50g/份</view>
-      </view>
-      <view>×1</view>
-    </view>
+   
     <view class="total">
-      <view class="mr-10">共2件</view>
+      <view class="mr-10">共{{item.totalNum}}件</view>
       <view class="mr-10">实付</view>
-      <view class="red">￥203.8</view>
+      <view class="red">￥{{item.totalAmount}}</view>
     </view>
     <view class="btn-box">
-      <van-button type="default" custom-class="button-left">申请售后</van-button>
-      <van-button type="primary" custom-class="button-right">主要按钮</van-button>
+      <van-button type="default" data-orderNo="{{item.orderNo}}" bind:click="cancelOrder" custom-class="button-left">取消订单</van-button>
+      <van-button type="primary" data-orderNo="{{item.orderNo}}" bind:click="pay" custom-class="button-right">去支付</van-button>
     </view>
   </view>
-  <view class="item">
+  <!-- <view class="item">
     <view class="status">
       <view class="left">
         <view class="desc">已收货</view>
@@ -72,6 +68,283 @@
     <view class="btn-box">
       <van-button type="default" custom-class="button-left">申请售后</van-button>
       <van-button type="primary" custom-class="button-right">主要按钮</van-button>
+    </view>
+  </view> -->
+</view>
+<view class="order-box" hidden="{{active != '1'}}">
+  <default hidden="{{orderDtoList.length != 0}}" textStr="您暂时没有订单信息哦！"></default>
+  <view class="item" wx:for="{{orderDtoList}}" wx:key="{{item.orderNo}}">
+    <view class="status">
+      <view class="left">
+        <view class="desc">待发货</view>
+        <view class="date">{{item.orderTime}}</view>
+      </view>
+      <view>
+        {{item.getOrderStatus == '0' ? '未接单': '已接单'}}
+         <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+      </view>
+    </view>
+    <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">{{child.productName}}</view>
+        <!-- <view class="weight">20kg</view> -->
+        <view class="bagWeight">{{child.standard}}</view>
+      </view>
+      <view>×{{child.num}}</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共{{item.totalNum}}件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+    <!-- <view class="btn-box">
+      <van-button type="default" data-orderNo="{{item.orderNo}}" bind:click="cancelOrder" custom-class="button-left">取消订单</van-button>
+      <van-button type="primary" data-orderNo="{{item.orderNo}}" bind:click="pay" custom-class="button-right">去支付</van-button>
+    </view> -->
+  </view>
+</view>
+<view class="order-box" hidden="{{active != '2'}}">
+  <default hidden="{{orderDtoList.length != 0}}" textStr="您暂时没有订单信息哦！"></default>
+  <view class="item" wx:for="{{orderDtoList}}" wx:key="{{item.orderNo}}">
+    <view class="status">
+      <view class="left">
+        <view class="desc">待发货</view>
+        <view class="date">{{item.orderTime}}</view>
+      </view>
+      <view>
+        
+        已接单 <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+      </view>
+    </view>
+    <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">{{child.productName}}</view>
+        <!-- <view class="weight">20kg</view> -->
+        <view class="bagWeight">{{child.standard}}</view>
+      </view>
+      <view>×{{child.num}}</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共{{item.totalNum}}件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+    <view class="btn-box">
+      <van-button type="primary" data-orderNo="{{item.orderNo}}" bind:click="receiveGoods" custom-class="button-right">确认收货</van-button>
     </view>
   </view>
 </view>
+<view class="order-box" hidden="{{active != '3'}}">
+  <default hidden="{{orderDtoList.length != 0}}" textStr="您暂时没有订单信息哦！"></default>
+  <view class="item" wx:for="{{orderDtoList}}" wx:key="{{item.orderNo}}">
+    <view class="status">
+      <view class="left">
+        <view class="desc">待发货</view>
+        <view class="date">{{item.orderTime}}</view>
+      </view>
+      <view>
+        
+        已接单 <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+      </view>
+    </view>
+    <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">{{child.productName}}</view>
+        <!-- <view class="weight">20kg</view> -->
+        <view class="bagWeight">{{child.standard}}</view>
+      </view>
+      <view>×{{child.num}}</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共{{item.totalNum}}件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+    <view class="btn-box">
+      <van-button type="default" data-ordertime="{{item.orderTime}}" data-orderno="{{item.orderNo}}" bind:click="goService" custom-class="button-left">申请售后</van-button>
+      <van-button type="primary" bind:click="goService" custom-class="button-right">再来一单</van-button>
+    </view>
+  </view>
+</view>
+<!-- <view class="order-box" hidden="{{active != '1'}}">
+  <view class="item">
+    <view class="status">
+      <view class="left">
+        <view class="desc">已收货</view>
+        <view class="date">2019-10-14</view>
+      </view>
+      <van-icon name="arrow" size="20rpx" />
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共2件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥203.8</view>
+    </view>
+    <view class="btn-box">
+      <van-button type="default" custom-class="button-left">申请售后</van-button>
+      <van-button type="primary" custom-class="button-right">主要按钮</van-button>
+    </view>
+  </view>
+  <view class="item">
+    <view class="status">
+      <view class="left">
+        <view class="desc">已收货</view>
+        <view class="date">2019-10-14</view>
+      </view>
+      <van-icon name="arrow" size="20rpx" />
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共2件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥203.8</view>
+    </view>
+    <view class="btn-box">
+      <van-button type="default" custom-class="button-left">申请售后</van-button>
+      <van-button type="primary" custom-class="button-right">主要按钮</van-button>
+    </view>
+  </view>
+</view> -->
+<view class="order-box" hidden="{{active != '4'}}">
+  <default hidden="{{orderDtoList.length != 0}}" textStr="您暂时没有订单信息哦！"></default>
+  <view class="item" wx:for="{{orderDtoList}}" wx:key="{{item.orderNo}}">
+    <view class="status">
+      <view class="left">
+        <view class="desc">待发货</view>
+        <view class="date">{{item.orderTime}}</view>
+      </view>
+      <view>
+        
+        已接单 <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+      </view>
+    </view>
+    <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">{{child.productName}}</view>
+        <!-- <view class="weight">20kg</view> -->
+        <view class="bagWeight">{{child.standard}}</view>
+      </view>
+      <view>×{{child.num}}</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共{{item.totalNum}}件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class="order-box" hidden="{{active != '4'}}">
+  <view class="item">
+    <view class="status">
+      <view class="left">
+        <view class="desc">已收货</view>
+        <view class="date">2019-10-14</view>
+      </view>
+      <van-icon name="arrow" size="20rpx" />
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共2件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥203.8</view>
+    </view>
+    <view class="btn-box">
+      <van-button type="default" custom-class="button-left">申请售后</van-button>
+      <van-button type="primary" custom-class="button-right">主要按钮</van-button>
+    </view>
+  </view>
+  <view class="item">
+    <view class="status">
+      <view class="left">
+        <view class="desc">已收货</view>
+        <view class="date">2019-10-14</view>
+      </view>
+      <van-icon name="arrow" size="20rpx" />
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共2件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥203.8</view>
+    </view>
+    <view class="btn-box">
+      <van-button type="default" custom-class="button-left">申请售后</van-button>
+      <van-button type="primary" custom-class="button-right">主要按钮</van-button>
+    </view>
+  </view>
+</view> -->
+<van-toast id="van-toast" />

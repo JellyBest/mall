@@ -1,5 +1,6 @@
 // pages/order/order.js
-import { post } from '../../api/http.js'
+import { post, getImg } from '../../api/http.js'
+import { moneyFormat } from '../../utils/util.js'
 const app = getApp()
 const Toast = app.globalData.Toast
 Page({
@@ -13,19 +14,67 @@ Page({
     address: null
   },
   clickBtn(){
+    if(this.data.address == ''){
+      wx.showModal({
+        title: '提示',
+        content: '请先选择默认地址',
+        success(res){
+          if(res.confirm){
+            wx.switchTab({
+              url: '/pages/user/user',
+            })
+          }
+        }
+      })
+      return 
+    }
     post("/order/order.do",{
       type: this.type == 1 ? "fromShopCar" :"fromPro",
       receiveCode: this.data.address.receiveCode,
       userCode: wx.getStorageSync("code")
     }).then(res => {
-      
+      let orderNo = res.orderNo
+      this.pay(orderNo)
+    })
+  },
+  async pay(orderNo){
+    let ret = await post("/order/toOrderPay.do",{
+      // userCode: wx.getStorageSync("code")
+      orderNo: orderNo
+    })
+    console.log(ret)
+    // { }
+    wx.requestPayment({
+      timeStamp: ret.timeStamp ,
+      nonceStr: ret.nonceStr,
+      package: ret.package,
+      signType: ret.signType,
+      paySign: ret.paySign,
+      success(res){
+        console.log(res,'pau')
+        wx.redirectTo({
+          url: '/pages/myOrder/myOrder?type=' +'sendUnReceive',
+        })
+      },
+      fail(res){
+        wx.redirectTo({
+          url: '/pages/myOrder/myOrder?type=' + 'unPay',
+        })
+      }
     })
   },
   getCarProds() {
     post("shopCar/getShopCarProductList.do", {
       userCode: wx.getStorageSync("code")
     }).then(res => {
-      this.setData({ userProductDtoList: res.userProductDtoList })
+      let data = res.userProductDtoList
+      data.map(item => {
+        item.titlePic = getImg(item.titlePic)
+        item.price = moneyFormat(item.price)
+        item.postPrice = moneyFormat(item.postPrice)
+        return item
+      })
+      this.setData({ userProductDtoList: data })
     }).catch(err => {
       Toast.fail(err.respInfo);
     })
@@ -43,13 +92,23 @@ Page({
       }
       let address = rt.filter(item => {
         return item.isDefault == 1
-      })[0]
-      console.log(address)
+      })
+      if(address.length == '0'){
+        address = ""
+      }else{
+        address = address[0]
+      }
+      console.log(address,'address')
       this.setData({
         address: address
       })
     }).catch(err => {
       console.error(err)
+    })
+  },
+  manageAds(){
+    wx.switchTab({
+      url: '/pages/user/user',
     })
   },
   /**

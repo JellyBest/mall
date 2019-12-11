@@ -1,6 +1,7 @@
 // pages/cate/cate.js
 const Toast = getApp().globalData.Toast
-import { post } from '../../api/http.js'
+import { post, getImg } from '../../api/http.js'
+import { moneyFormat } from '../../utils/util.js'
 Page({
 
   /**
@@ -8,6 +9,7 @@ Page({
    */
   data: {
     imageURL: "../../../assets/carrot.png",
+    showDefault: false,
     active: "",
     cateList: [],
     proList: []
@@ -26,7 +28,8 @@ Page({
     post("shopCar/putProToShopCar.do",{
       userCode: wx.getStorageSync("code"),
       productCode: code,
-      amount: 1
+      amount: 1,
+      putType: "fromPro"
     }).then(res => {
         Toast("添加成功")
     }).catch(err=>{
@@ -42,6 +45,21 @@ Page({
       orderByPrice: 1
     }).then(res => {
       let data = res.productDtoList
+      data = data.map(item => {
+        item.titlePic = getImg(item.titlePic)
+        item.oldPrice = moneyFormat(item.oldPrice)
+        item.price = moneyFormat(item.price)
+        return item
+      })
+      if(data.length == 0){
+        this.setData({
+          showDefault: true
+        })
+      }else{
+        this.setData({
+          showDefault: false
+        })
+      }
       this.setData({
         proList: data
       })

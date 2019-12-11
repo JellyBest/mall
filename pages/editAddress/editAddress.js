@@ -40,7 +40,7 @@ Page({
         receiveName: ret.receiveName,
         addressDetail: ret.addressDetail,
         receiveMobile: ret.receiveMobile,
-        isDefault: ret.isDefault
+        isDefault: ret.isDefault == "1" ? true : false
       })
       this.provinceName = ret.provinceName
       this.cityName = ret.cityName
@@ -164,7 +164,7 @@ Page({
    */
   addClick() {
     post("address/wxUserAddress.do", {
-      type: 1,
+      type: 2,
       receiveCode: this.receiveCode,
       provinceCode: this.data.provinces[this.data.provinceIndex].code,
       cityCode: this.data.cities[this.data.cityIndex].code,

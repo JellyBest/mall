@@ -2,24 +2,27 @@
 <view class="form">
   <view class="cell">
     <view>订单号码:</view>
-    <view>20191014036587</view>
+    <view>{{order.orderNo}}</view>
   </view>
   <view class="cell">
     <view>下单时间:</view>
-    <view>2018-10-14 16：30：28</view>
+    <view>{{order.orderTime}}</view>
   </view>
   <view class="area">
     <textarea placeholder="请进行描述..."></textarea>
   </view>
   <view class="upload-btn">
     <image class="upload" src="../../assets/upload.png"></image>
-    <view>照片上传</view>
+    <!-- <view>照片上传</view> -->
+    <van-uploader max-count="6" bind:after-read="afterRead" use-slot>
+      <van-button icon="photo" type="primary">照片上传</van-button>
+    </van-uploader>
   </view>
   <view class="imgs">
-    <view class="img-item">
-      <image src=""></image>
+    <view wx:for="{{fileList}}" wx:key="{{index}}" class="img-item">
+      <image src="{{item.url}}"></image>
     </view>
-    <view class="img-item">
+    <view hidden="{{fileList.length > 0}}" class="img-item">
       <image src=""></image>
     </view>
   </view>
@@ -30,6 +33,5 @@
       <van-radio checked-color="#89c02e" name="2">否</van-radio>
     </van-radio-group>
   </view>
-  
-</view>
 
+</view>

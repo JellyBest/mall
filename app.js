@@ -1,5 +1,5 @@
 //app.js
-import Toast from './miniprogram_npm/vant-weapp/toast/toast';
+import Toast from './miniprogram_npm/@vant/weapp/toast/toast';
 App({
   onLaunch: function () {
     // 展示本地存储能力

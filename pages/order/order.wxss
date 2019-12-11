@@ -87,3 +87,8 @@
 	border-radius: 20rpx;
   font-size: 24rpx;
 }
+.ads{
+  color: #fff;
+  font-size: 32rpx;
+  padding-bottom: 20rpx;
+}

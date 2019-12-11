@@ -62,7 +62,7 @@
 .bottom{
   color: #dd666a;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   height: 90rpx;
   padding: 0 40rpx 0 100rpx;

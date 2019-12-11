@@ -52,7 +52,14 @@
 }
 .tag-box{
   display: flex;
+  font-size: 24rpx;
+  flex-wrap: wrap;
 }
 .tag-box view{
   margin-right: 10rpx;
+}
+
+.small-default{
+  width: 590rpx;
+  overflow: hidden;
 }

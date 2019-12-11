@@ -1,5 +1,3 @@
-<!--index.wxml-->
-
 <image class="bgc" src="../../assets/bgc.png"></image>
 
 <view class="content">

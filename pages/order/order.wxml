@@ -1,7 +1,7 @@
 <!--pages/order/order.wxml-->
-<view class="top">
+<view class="top" bindtap="manageAds">
   <van-icon name="location-o" size="40rpx" color="#fff" />
-  <view class="info">
+  <view class="info" hidden="{{address == ''}}">
     <view class="cell">
       <view class="label">收货人:</view>
       <view class="content right">
@@ -16,12 +16,15 @@
       </view>
     </view>
   </view>
+  <view class="ads" hidden="{{address != ''}}">
+    去选择收获地址
+  </view>
   <view class="arrow">
     <van-icon name="arrow" size="40rpx" color="#fff" />
   </view>
 </view>
 <view class="card-box">
-   <van-card wx:for="{{userProductDtoList}}" wx:key="{{index}}" custom-class="card" thumb="{{ imageURL }}">
+   <van-card wx:for="{{userProductDtoList}}" wx:key="{{index}}" custom-class="card" thumb="{{ item.titlePic }}">
       <view class="card-title" slot="title">
         <view>{{item.descr}}</view>
         <view class="card-price">￥{{item.price}}</view>
@@ -56,9 +59,9 @@
     </van-card> -->
 </view>
 <view class="btm-box">
-  <view class="total">
+  <!-- <view class="total">
     <view class="btm-label">合计：</view><view class="red">99</view>
-  </view>
+  </view> -->
   <van-button custom-class="btm-btn" bindclick="clickBtn" >去支付</van-button>
   <!-- <view class="btm-btn">
     去支付

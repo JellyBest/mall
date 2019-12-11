@@ -1,11 +1,11 @@
 {
   "usingComponents": {
-    "van-area": "/miniprogram_npm/vant-weapp/area/index",
-    "van-picker": "/miniprogram_npm/vant-weapp/picker/index",
-    "van-toast": "/miniprogram_npm/vant-weapp/toast/index",
-    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index",
-    "van-field": "/miniprogram_npm/vant-weapp/field/index",
-    "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index"
+    "van-area": "/miniprogram_npm/@vant/weapp/area/index",
+    "van-picker": "/miniprogram_npm/@vant/weapp/picker/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index",
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
+    "van-overlay": "/miniprogram_npm/@vant/weapp/overlay/index"
   },
   "navigationBarTitleText": "新增地址"
 }

@@ -41,10 +41,15 @@ page{
   margin-bottom: 20rpx;
 }
 .img-item{
+  
+  margin-right: 6rpx;
+  margin-bottom: 20rpx;
+  border: 2rpx solid #ccc;
+}
+.img-item image{
   width: 200rpx;
   height: 200rpx;
-  margin-right: 6rpx;
-  border: 2rpx solid #ccc;
+  border-radius: 20rpx;
 }
 .back{
   display: flex;

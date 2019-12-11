@@ -1,8 +1,8 @@
 {
   "usingComponents": {
-    "van-toast": "/miniprogram_npm/vant-weapp/toast/index",
-    "van-area": "/miniprogram_npm/vant-weapp/area/index",
-    "van-picker": "/miniprogram_npm/vant-weapp/picker/index"
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index",
+    "van-area": "/miniprogram_npm/@vant/weapp/area/index",
+    "van-picker": "/miniprogram_npm/@vant/weapp/picker/index"
   },
   "navigationBarTitleText": "编辑地址"
 }

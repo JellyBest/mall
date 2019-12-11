@@ -2,8 +2,8 @@
 <view class="top">
   <image class="mi" src="../../assets/mine-bgc.png"></image>
   <view class="card">
-    <image class="head" src="../../assets/head.png"></image>
-    <view class="name">我是小清啊</view>
+    <image class="head" src="{{userInfo.avatarUrl}}"></image>
+    <view class="name">{{userInfo.userName}}</view>
   </view>
 </view>
 <view class="order">
@@ -12,20 +12,24 @@
     <!-- <view class="right">查看全部订单 ></view> -->
   </view>
   <view class="grid">
-    <view class="grid-item" data-step="0"  bindtap="goToMyOrder">
+    <view class="grid-item" data-step="unPay"  bindtap="goToMyOrder">
       <image class="media-img" src="../../assets/pay.png"></image>
       <view class="media-txt">待付款</view>
     </view>
     <view class="grid-item">
-      <image class="media-img" data-step="1" bindtap="goToMyOrder" src="../../assets/receive.png"></image>
+      <image class="media-img" data-step="unSend" bindtap="goToMyOrder" src="../../assets/receive.png"></image>
+      <view class="media-txt">待发货</view>
+    </view>
+    <view class="grid-item">
+      <image class="media-img" data-step="sendUnReceive" bindtap="goToMyOrder" src="../../assets/receive.png"></image>
       <view class="media-txt">待收货</view>
     </view>
     <view class="grid-item">
-      <image class="media-img" data-step="2" bindtap="goToMyOrder" src="../../assets/received.png"></image>
+      <image class="media-img" data-step="receive" bindtap="goToMyOrder" src="../../assets/received.png"></image>
       <view class="media-txt">已收货</view>
     </view>
     <view class="grid-item">
-      <image class="media-img" data-step="3" bindtap="goToMyOrder" src="../../assets/service.png"></image>
+      <image class="media-img" data-step="service" bindtap="goToMyOrder" src="../../assets/service.png"></image>
       <view class="media-txt">售后</view>
     </view>
   </view>
