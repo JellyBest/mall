@@ -7,7 +7,6 @@
     <image class="logo" src="../../assets/head.png"></image>
     <view class="name">{{storeInfo.merchantName}}</view>
   </view>
-
   <view class="info">
     <van-icon size="40rpx" name="location-o" />
     <view>{{storeInfo.address}}</view>

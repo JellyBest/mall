@@ -1,0 +1,45 @@
+<view class="top">
+  <view class="order">{{orderDetail.status}}</view>
+</view>
+<view class="item">
+    <!-- <view class="status">
+      <view class="left">
+       送达时间
+      </view>
+      <view>2019-11-1 14:44:09</view>
+    </view>
+    <view class="status">
+      <view class="left">
+       配送地址
+      </view>
+      <view class="ads">
+        <view class="ads-name">
+        田田田 18888888888
+        </view>
+        <view class="address">某某某小区几单元202</view>
+      </view>
+    </view> -->
+    <view class="list" wx:for="{{orderDetail.orderProductList}}" wx:for-item="child">
+      <view class="left">
+        <image src="{{child.productPicUrl}}" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view>
+    <!-- <view class="list">
+      <view class="left">
+        <image src="../../assets/carrot.png" class="good"></image>
+        <view class="name">胡萝卜</view>
+        <view class="weight">20kg</view>
+        <view class="bagWeight">50g/份</view>
+      </view>
+      <view>×1</view>
+    </view> -->
+    <view class="total">
+      <view class="mr-10">共{{orderDetail.totalNum}}件</view>
+      <view class="mr-10">实付</view>
+      <view class="red">￥{{orderDetail.totalAmount}}</view>
+    </view>
+  </view>

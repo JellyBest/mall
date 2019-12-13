@@ -14,7 +14,7 @@
       <image src="../../assets/more.png" class="more"></image>
     </view>
     <view class="new-list" hidden="{{item.moduleType != 'NEW_PRO'}}">
-      <view class="new-prod" wx:for="{{item.productDtoList}}" wx:key="{{item.productId}}">
+      <view bindtap="goToDetail" data-code="{{item.productCode}}" class="new-prod" wx:for="{{item.productDtoList}}" wx:key="{{item.productId}}">
         <image class="small-pic" src="{{item.titlePic}}"></image>
         <view class="name">{{item.productName}}</view>
         <view class="price">￥{{item.price}}</view>

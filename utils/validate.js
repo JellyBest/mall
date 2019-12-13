@@ -122,7 +122,7 @@ Validate.prototype.resolveRule = function (rule, field) {
  */
 Validate.prototype.check = {
   required(val, rule) { //必填
-
+    if(val === 0) return true
     return (val != '') && (val != null);
   },
   min(val, rule) { //最小

@@ -18,6 +18,8 @@
     "pages/order/order",
     "pages/myOrder/myOrder",
     "pages/soldService/soldService",
+    "pages/proDetail/proDetail",
+    "pages/orderDetail/orderDetail",
     "pages/logs/logs"
   ],
   "window": {

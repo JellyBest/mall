@@ -4,7 +4,7 @@ page{
   box-sizing: border-box;
 }
 .form{
-  font-size: 24rpx;
+  font-size: 34rpx;
   color: #333;
 }
 .cell{
@@ -21,14 +21,14 @@ page{
   border: 2rpx solid #ccc;
 }
 .upload{
-  width: 20rpx;
-  height: 18rpx; 
+  width: 30rpx;
+  height: 28rpx; 
   margin-right: 6rpx;
 }
 .upload-btn{
-  width: 124rpx;
-	height: 32rpx;
-  font-size: 20rpx;
+  width: 184rpx;
+	height: 62rpx;
+  font-size: 30rpx;
   margin: 20rpx 0;
 	border: solid 1rpx #cccccc;
   display: flex;
@@ -45,6 +45,8 @@ page{
   margin-right: 6rpx;
   margin-bottom: 20rpx;
   border: 2rpx solid #ccc;
+  padding: 2rpx;
+  box-sizing: border-box;
 }
 .img-item image{
   width: 200rpx;
@@ -59,7 +61,26 @@ page{
 }
 .radio-class{
   display: flex;
+  flex-direction: column;
 }
 .radio-left{
-  margin-right: 20rpx;
+  margin-right: 10rpx;
+  margin-bottom: 20rpx;
+}
+.btn-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 52rpx;
+}
+.btn{
+  width: 500rpx;
+	height: 90rpx;
+	background-color: #89c02e;
+	border-radius: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fafafa;
+  font-size: 32rpx;
 }

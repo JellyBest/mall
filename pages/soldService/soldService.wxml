@@ -9,12 +9,12 @@
     <view>{{order.orderTime}}</view>
   </view>
   <view class="area">
-    <textarea placeholder="请进行描述..."></textarea>
+    <textarea bindinput="inputText" value="{{refundReason}}" placeholder="请进行描述..."></textarea>
   </view>
   <view class="upload-btn">
     <image class="upload" src="../../assets/upload.png"></image>
     <!-- <view>照片上传</view> -->
-    <van-uploader max-count="6" bind:after-read="afterRead" use-slot>
+    <van-uploader max-count="1" bind:after-read="afterRead" use-slot>
       <van-button icon="photo" type="primary">照片上传</van-button>
     </van-uploader>
   </view>
@@ -27,11 +27,20 @@
     </view>
   </view>
   <view class="back">
-    <view class="label">是否退款</view>
+    <view class="label">售后方式</view>
     <van-radio-group class="radio-class" value="{{ radio }}" bind:change="onChange">
-      <van-radio checked-color="#89c02e" name="1" class="radio-left">是</van-radio>
-      <van-radio checked-color="#89c02e" name="2">否</van-radio>
+      <van-radio checked-color="#89c02e" name="0" class="radio-left">仅退款</van-radio>
+      <van-radio checked-color="#89c02e" name="1" class="radio-left">退货退款</van-radio>
+      <van-radio checked-color="#89c02e" name="2" class="radio-left">部分退货退款</van-radio>
     </van-radio-group>
   </view>
-
+  <view hidden="{{radio!='2'}}" class="cell">
+    <view>退款金额:</view>
+    <view><input type="digit" bindinput="amountInput" value="{{refundAmount}}" placeholder="请输入退款金额(元）"></input></view>
+  </view>
+  <view class="btn-box">
+    <view class="submit btn" bindtap="submitForm">提交</view>
+  </view>
 </view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

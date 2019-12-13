@@ -44,6 +44,12 @@ Page({
       url: '/pages/morePros/morePros?moduleCode=' + moduleCode,
     })
   },
+  goToDetail(e){
+    let productCode = e.currentTarget.dataset.code
+    wx.navigateTo({
+      url: '/pages/proDetail/proDetail?productCode=' + productCode,
+    })
+  },
   getPro(code){
     return new Promise( (resolve,reject) => {
       post("mini/getModuleProList.do", {

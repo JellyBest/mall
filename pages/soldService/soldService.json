@@ -1,5 +1,7 @@
 {
   "usingComponents": {
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index",
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
     "van-uploader": "/miniprogram_npm/@vant/weapp/uploader/index",
     "van-radio": "/miniprogram_npm/@vant/weapp/radio/index",
     "van-radio-group": "/miniprogram_npm/@vant/weapp/radio-group/index"

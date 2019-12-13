@@ -1,5 +1,5 @@
 // pages/myOrder/myOrder.js
-import { post } from '../../api/http.js'
+import { post,getImg } from '../../api/http.js'
 import { moneyFormat, formatTime } from '../../utils/util.js'
 const app = getApp()
 const Toast = app.globalData.Toast
@@ -17,6 +17,9 @@ Page({
   pageSize: 10,
   
   changeTab(e){
+    this.setData({
+      orderDtoList: []
+    })
     console.log(e)
     let index = e.detail.detail.index
     this.setData({
@@ -26,12 +29,24 @@ Page({
     console.log(index,type,'type')
     this.getOrderList(type)
   },
+  //订单详情
+  goToDetail(e){
+    let orderNo = e.currentTarget.dataset.orderno
+    wx.navigateTo({
+      url: '/pages/orderDetail/orderDetail?orderNo=' + orderNo
+    })
+  },
   //申请售后
   goService(e){
     let orderNo = e.currentTarget.dataset.orderno
     let ordertime = e.currentTarget.dataset.ordertime
     wx.navigateTo({
       url: '/pages/soldService/soldService?orderNo=' + orderNo + '&orderTime=' + ordertime
+    })
+  },
+  goCate(){
+    wx.switchTab({
+      url: '/pages/cate/cate',
     })
   },
   //确认收货
@@ -57,6 +72,16 @@ Page({
       this.getOrderList("unPay")
     }
   },
+  async cancelRefund(e) {
+    let refundNo = e.currentTarget.dataset.refundno
+    let ret = await post("/refund/cancelRefund.do", {
+      refundNo: refundNo
+    })
+    if (ret.respCode === "0000") {
+      Toast("已取消")
+      this.getOrderList("unPay")
+    }
+  },
   //取消订单
   async cancelOrder(e) {
     let orderNo = e.currentTarget.dataset.orderno
@@ -65,7 +90,7 @@ Page({
     })
     if(ret.respCode === "0000"){
       Toast("已取消")
-      this.getOrderList("unPay")
+      this.getOrderList("service")
     }
     console.log(ret)
   },
@@ -93,20 +118,23 @@ Page({
       }
     })
   },
+  
   async getOrderList(type){
     if(type == "service"){
       let ret = await post("/refund/refundList.do", {
         page: this.pageNo,
         size: this.pageSize
       })
-      // let orderDtoList = ret.orderDtoList.map(item => {
-      //   item.orderTime = formatTime(item.orderTime)
-      //   item.totalAmount = moneyFormat(item.totalAmount)
-      //   return item
-      // })
-      // this.setData({
-      //   orderDtoList
-      // })
+      let orderDtoList = ret.refundList.map(item => {
+        item.orderTime = formatTime(item.createTime)
+        item.totalAmount = moneyFormat(item.totalAmount)
+        item.status = this.getStatus(item.status)
+        item.refundType = this.getRefund(item.refundType)
+        return item
+      })
+      this.setData({
+        orderDtoList
+      })
       return
     }
      
@@ -118,6 +146,11 @@ Page({
     let orderDtoList = ret.orderDtoList.map(item => {
       item.orderTime = formatTime(item.orderTime)
       item.totalAmount = moneyFormat(item.totalAmount)
+      item.totalNum = item.productSimpleList.length
+      item.productSimpleList = item.productSimpleList.map(child => {
+        child.titlePic = getImg(child.titlePic)
+        return child
+      }) 
       return item
     })
     this.setData({
@@ -163,6 +196,39 @@ Page({
     })
     console.log(this.data.active)
   },
+  getRefund(type){
+    switch (type) {
+      case "0":
+        return "仅退款"
+      case "1":
+        return "退货退款"
+      case "2":
+        return "部分退货退款"
+    }
+  },
+  getStatus(type) {
+    switch (type) {
+      case "0":
+        return "未审核"
+      case "1":
+        return "审核成功"
+      case "2":
+        return "审核失败"
+      case "3":
+        return "退款成功"
+      case "4":
+        return "退款失败"
+      case "5":
+        return "已取消"
+      case "6":
+        return "线下处理完成"
+    }
+    this.setData({
+      active: this.data.active
+    })
+    console.log(this.data.active)
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
