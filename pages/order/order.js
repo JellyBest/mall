@@ -57,9 +57,16 @@ Page({
         })
       },
       fail(res){
-        wx.redirectTo({
-          url: '/pages/myOrder/myOrder?type=' + 'unPay',
-        })
+        post("order/notPayOrder.do", {
+          orderNo: orderNo
+        }).then(
+          ()=>{
+            wx.redirectTo({
+              url: '/pages/myOrder/myOrder?type=' + 'unPay',
+            })
+          }
+        )
+        
       }
     })
   },

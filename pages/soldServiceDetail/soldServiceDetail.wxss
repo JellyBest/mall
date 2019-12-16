@@ -50,12 +50,12 @@
   margin-left: 30rpx;
 }
 .good{
-  width: 144rpx;
-  height: 136rpx;
+  width: 64rpx;
+  height: 36rpx;
 }
 .list{
   padding: 0 40rpx;
-  height: 160rpx;
+  height: 60rpx;
   box-sizing: border-box;
   font-size: 24rpx;
   display: flex;
@@ -65,7 +65,6 @@
 }
 .list .left{
   display: flex;
-  align-items: center;
 }
 .name{
   margin: 0 20rpx 0 12rpx;

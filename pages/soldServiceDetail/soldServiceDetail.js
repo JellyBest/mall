@@ -1,36 +1,47 @@
-// pages/proDetail/proDetail.js
-// pages/orderDetail/orderDetail.js
-import { post, getImg } from '../../api/http.js'
-import { moneyFormat } from '../../utils/util.js'
-const app = getApp()
-const Toast = app.globalData.Toast
+// pages/soldServiceDetail/soldServiceDetail.js
+import { post, uploadImg } from '../../api/http.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    refund: {}
   },
-  productCode: "",
+  refundNo: "",
   async getDetail(){
-    let ret = await post("category/productDetail.do",{
-      productCode: this.productCode
+    let ret = await post("refund/refundDetail.do",{
+      refundNo: this.refundNo
     })
-    let product = ret.product
-    product.bigPicUrl = getImg(product.bigPicUrl)
-    product.descPics = getImg(product.descPics)
+    let refund = ret.refund
+    refund.status = this.getStatus(refund.status)
     this.setData({
-      detail: ret.product
+      refund: refund
     })
-    // console.log(ret)
-    // let 
+  },
+  getStatus(type){
+    switch(type){
+      case "0": 
+        return "未审核"
+      case "1":
+        return "审核成功"
+      case "2":
+        return "审核失败"
+      case "3":
+        return "退款成功"
+      case "4":
+        return "退款失败"
+      case "5":
+        return "已取消"
+      case "6":
+        return "线下处理完成"
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.productCode = options.productCode
+    this.refundNo = options.refundNo
     this.getDetail()
   },
 

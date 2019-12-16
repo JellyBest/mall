@@ -118,7 +118,7 @@ export function post(url,data){
               showCancel: false,
               success(res){
                 wx.reLaunch({
-                  url: '/pages/guide/guide'
+                  url: '/pages/index/index'
                 })
               }
             })

@@ -4,55 +4,97 @@
 <view class="order-box" hidden="{{active != '0'}}">
   <default hidden="{{orderDtoList.length != 0}}" textStr="您暂时没有订单信息哦！"></default>
   <view class="item" wx:for="{{orderDtoList}}" wx:key="{{item.orderNo}}">
-    <view class="status" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
-      <view class="left">
-        <view class="desc">订单编号</view>
-        <view class="date">{{item.orderNo}}</view>
+    <view class="status-box" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
+      <view class="status">
+        <view class="left">
+          <view class="desc">订单编号</view>
+          <view class="date">{{item.orderNo}}</view>
+        </view>
+        <view class="right">
+          <view class="right-left">
+            <van-count-down class="clock" time="{{ item.endTime }}" />
+          </view>
+          <van-icon name="arrow" size="30rpx" />
+        </view>
       </view>
-      <view>
-        <van-icon name="arrow" size="20rpx" />
-      </view>
-      
+      <view class="close">（逾期未支付自动关闭）</view>
     </view>
-    <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+    <view class="list" hidden="{{item.productSimpleList.length > 1}}" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
       <view class="left">
-        <image src="{{child.titlePic}}" class="good"></image>
+        <image src="{{child.titlePic}}" class="good one-good"></image>
         <view class="name">{{child.productName}}</view>
         <!-- <view class="weight">20kg</view> -->
-        <view class="bagWeight">{{child.standard}}</view>
+        <!-- <view class="bagWeight">{{child.standard}}</view> -->
       </view>
-      <view>×{{child.num}}</view>
+      <!-- <view>×{{child.num}}</view> -->
+      <view class="red">￥{{item.totalAmount}}</view>
     </view>
-   
+    <view class="list" hidden="{{item.productSimpleList.length == 1}}">
+      <view class="left-imgs">
+        <image wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}" src="{{child.titlePic}}" class="good goods"></image>
+        <!-- <view class="name">{{child.productName}}</view> -->
+        <!-- <view class="weight">20kg</view> -->
+        <!-- <view class="bagWeight">{{child.standard}}</view> -->
+      </view>
+      <!-- <view>×{{child.num}}</view> -->
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
     <view class="total">
       <view class="mr-10">共{{item.totalNum}}件</view>
-      <view class="mr-10">实付</view>
-      <view class="red">￥{{item.totalAmount}}</view>
+      <!-- <view class="mr-10">实付</view>
+      <view class="red">￥{{item.totalAmount}}</view> -->
     </view>
     <view class="btn-box">
       <van-button type="default" data-orderNo="{{item.orderNo}}" bind:click="cancelOrder" custom-class="button-left">取消订单</van-button>
       <van-button type="primary" data-orderNo="{{item.orderNo}}" bind:click="pay" custom-class="button-right">去支付</van-button>
     </view>
   </view>
+
 </view>
 <view class="order-box" hidden="{{active != '1'}}">
   <default hidden="{{orderDtoList.length != 0}}" textStr="您暂时没有订单信息哦！"></default>
   <view class="item" wx:for="{{orderDtoList}}" wx:key="{{item.orderNo}}">
-    <view class="status" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
-      <view class="left">
-        <view class="desc">订单编号</view>
-        <view class="date">{{item.orderNo}}</view>
-      </view>
-      <view>
-        {{item.getOrderStatus == '0' ? '未接单': '已接单'}}
-         <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+    <view class="status-box" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
+      <view class="status">
+        <view class="left">
+          <view class="desc">订单编号</view>
+          <view class="date">{{item.orderNo}}</view>
+        </view>
+        <view>
+          {{item.getOrderStatus == '0' ? '未接单': '已接单'}}
+          <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+        </view>
       </view>
     </view>
-    <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+    <view class="list" hidden="{{item.productSimpleList.length > 1}}" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+      <view class="left">
+        <image src="{{child.titlePic}}" class="good one-good"></image>
+        <view class="name">{{child.productName}}</view>
+        <!-- <view class="weight">20kg</view> -->
+        <!-- <view class="bagWeight">{{child.standard}}</view> -->
+      </view>
+      <!-- <view>×{{child.num}}</view> -->
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+    <view class="list" hidden="{{item.productSimpleList.length == 1}}">
+      <view class="left-imgs">
+        <image wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}" src="{{child.titlePic}}" class="good goods"></image>
+        <!-- <view class="name">{{child.productName}}</view> -->
+        <!-- <view class="weight">20kg</view> -->
+        <!-- <view class="bagWeight">{{child.standard}}</view> -->
+      </view>
+      <!-- <view>×{{child.num}}</view> -->
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共{{item.totalNum}}件</view>
+      <!-- <view class="mr-10">实付</view>
+      <view class="red">￥{{item.totalAmount}}</view> -->
+    </view>
+    <!-- <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
       <view class="left">
         <image src="{{child.titlePic}}" class="good"></image>
         <view class="name">{{child.productName}}</view>
-        <!-- <view class="weight">20kg</view> -->
         <view class="bagWeight">{{child.standard}}</view>
       </view>
       <view>×{{child.num}}</view>
@@ -61,7 +103,7 @@
       <view class="mr-10">共{{item.totalNum}}件</view>
       <view class="mr-10">实付</view>
       <view class="red">￥{{item.totalAmount}}</view>
-    </view>
+    </view> -->
     <!-- <view class="btn-box">
       <van-button type="default" data-orderNo="{{item.orderNo}}" bind:click="cancelOrder" custom-class="button-left">取消订单</van-button>
       <van-button type="primary" data-orderNo="{{item.orderNo}}" bind:click="pay" custom-class="button-right">去支付</van-button>
@@ -71,21 +113,33 @@
 <view class="order-box" hidden="{{active != '2'}}">
   <default hidden="{{orderDtoList.length != 0}}" textStr="您暂时没有订单信息哦！"></default>
   <view class="item" wx:for="{{orderDtoList}}" wx:key="{{item.orderNo}}">
-    <view class="status" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
+    <view class="status-box" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
+      <view class="status">
+        <view class="left">
+          <view class="desc">订单编号</view>
+          <view class="date">{{item.orderNo}}</view>
+        </view>
+        <view>
+          {{item.getOrderStatus == '0' ? '未接单': '已接单'}}
+          <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+        </view>
+      </view>
+    </view>
+    <!-- <view class="status" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
       <view class="left">
         <view class="desc">订单编号</view>
         <view class="date">{{item.orderNo}}</view>
       </view>
       <view>
-        
-        已接单 <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+
+        已接单
+        <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
       </view>
-    </view>
-    <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+    </view> -->
+    <!-- <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
       <view class="left">
         <image src="{{child.titlePic}}" class="good"></image>
         <view class="name">{{child.productName}}</view>
-        <!-- <view class="weight">20kg</view> -->
         <view class="bagWeight">{{child.standard}}</view>
       </view>
       <view>×{{child.num}}</view>
@@ -94,6 +148,31 @@
       <view class="mr-10">共{{item.totalNum}}件</view>
       <view class="mr-10">实付</view>
       <view class="red">￥{{item.totalAmount}}</view>
+    </view> -->
+    <view class="list" hidden="{{item.productSimpleList.length > 1}}" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+      <view class="left">
+        <image src="{{child.titlePic}}" class="good one-good"></image>
+        <view class="name">{{child.productName}}</view>
+        <!-- <view class="weight">20kg</view> -->
+        <!-- <view class="bagWeight">{{child.standard}}</view> -->
+      </view>
+      <!-- <view>×{{child.num}}</view> -->
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+    <view class="list" hidden="{{item.productSimpleList.length == 1}}">
+      <view class="left-imgs">
+        <image wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}" src="{{child.titlePic}}" class="good goods"></image>
+        <!-- <view class="name">{{child.productName}}</view> -->
+        <!-- <view class="weight">20kg</view> -->
+        <!-- <view class="bagWeight">{{child.standard}}</view> -->
+      </view>
+      <!-- <view>×{{child.num}}</view> -->
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共{{item.totalNum}}件</view>
+      <!-- <view class="mr-10">实付</view>
+      <view class="red">￥{{item.totalAmount}}</view> -->
     </view>
     <view class="btn-box">
       <van-button type="primary" data-orderNo="{{item.orderNo}}" bind:click="receiveGoods" custom-class="button-right">确认收货</van-button>
@@ -103,21 +182,32 @@
 <view class="order-box" hidden="{{active != '3'}}">
   <default hidden="{{orderDtoList.length != 0}}" textStr="您暂时没有订单信息哦！"></default>
   <view class="item" wx:for="{{orderDtoList}}" wx:key="{{item.orderNo}}">
-    <view class="status" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
+    <!-- <view class="status" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
       <view class="left">
         <view class="desc">订单编号</view>
         <view class="date">{{item.orderNo}}</view>
       </view>
       <view>
-        
-        已接单 <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+        已接单
+        <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+      </view>
+    </view> -->
+    <view class="status-box" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
+      <view class="status">
+        <view class="left">
+          <view class="desc">订单编号</view>
+          <view class="date">{{item.orderNo}}</view>
+        </view>
+        <view>
+          {{item.getOrderStatus == '0' ? '未接单': '已接单'}}
+          <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
+        </view>
       </view>
     </view>
-    <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+    <!-- <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
       <view class="left">
         <image src="{{child.titlePic}}" class="good"></image>
         <view class="name">{{child.productName}}</view>
-        <!-- <view class="weight">20kg</view> -->
         <view class="bagWeight">{{child.standard}}</view>
       </view>
       <view>×{{child.num}}</view>
@@ -126,6 +216,31 @@
       <view class="mr-10">共{{item.totalNum}}件</view>
       <view class="mr-10">实付</view>
       <view class="red">￥{{item.totalAmount}}</view>
+    </view> -->
+    <view class="list" hidden="{{item.productSimpleList.length > 1}}" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+      <view class="left">
+        <image src="{{child.titlePic}}" class="good one-good"></image>
+        <view class="name">{{child.productName}}</view>
+        <!-- <view class="weight">20kg</view> -->
+        <!-- <view class="bagWeight">{{child.standard}}</view> -->
+      </view>
+      <!-- <view>×{{child.num}}</view> -->
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+    <view class="list" hidden="{{item.productSimpleList.length == 1}}">
+      <view class="left-imgs">
+        <image wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}" src="{{child.titlePic}}" class="good goods"></image>
+        <!-- <view class="name">{{child.productName}}</view> -->
+        <!-- <view class="weight">20kg</view> -->
+        <!-- <view class="bagWeight">{{child.standard}}</view> -->
+      </view>
+      <!-- <view>×{{child.num}}</view> -->
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+    <view class="total">
+      <view class="mr-10">共{{item.totalNum}}件</view>
+      <!-- <view class="mr-10">实付</view>
+      <view class="red">￥{{item.totalAmount}}</view> -->
     </view>
     <view class="btn-box">
       <van-button type="default" data-ordertime="{{item.orderTime}}" data-orderno="{{item.orderNo}}" bind:click="goService" custom-class="button-left">申请售后</van-button>
@@ -135,35 +250,47 @@
 </view>
 <view class="order-box" hidden="{{active != '4'}}">
   <default hidden="{{orderDtoList.length != 0}}" textStr="您暂时没有订单信息哦！"></default>
-  
+
   <view class="item" wx:for="{{orderDtoList}}" wx:key="{{item.orderNo}}">
-  <view class="status" data-orderno="{{item.orderNo}}" bindtap="goToDetail">
-      <view class="left">
-        <view class="desc">{{item.status}}</view>
-        <view class="date">{{item.orderTime}}</view>
+    <view class="status-box" data-type="service" data-orderno="{{item.refundNo}}" bindtap="goToDetail">
+      <view class="status">
+        <view class="left">
+          <view class="desc">订单编号</view>
+          <view class="date">{{item.orderNo}}</view>
+        </view>
+        <view>
+        {{item.refundType}}
+        <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
       </view>
-      <view>
-        
-        {{item.refundType}} <van-icon style="margin-left:20rpx;" name="arrow" size="20rpx" />
       </view>
     </view>
-    
-    <view class="list" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
+    <view class="list" hidden="{{item.productSimpleList.length > 1}}" wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}">
       <view class="left">
-        <image src="{{child.titlePic}}" class="good"></image>
+        <image src="{{child.refundPic}}" class="good one-good"></image>
         <view class="name">{{child.productName}}</view>
         <!-- <view class="weight">20kg</view> -->
-        <view class="bagWeight">{{child.standard}}</view>
+        <!-- <view class="bagWeight">{{child.standard}}</view> -->
       </view>
-      <view>×{{child.num}}</view>
+      <!-- <view>×{{child.num}}</view> -->
+      <view class="red">￥{{item.totalAmount}}</view>
+    </view>
+    <view class="list" hidden="{{item.productSimpleList.length == 1}}">
+      <view class="left-imgs">
+        <image wx:for="{{item.productSimpleList}}" wx:for-item="child" wx:key="{{index}}" src="{{child.refundPic}}" class="good goods"></image>
+        <!-- <view class="name">{{child.productName}}</view> -->
+        <!-- <view class="weight">20kg</view> -->
+        <!-- <view class="bagWeight">{{child.standard}}</view> -->
+      </view>
+      <!-- <view>×{{child.num}}</view> -->
+      <view class="red">￥{{item.totalAmount}}</view>
     </view>
     <view class="total">
       <view class="mr-10">共{{item.totalNum}}件</view>
-      <view class="mr-10">实付</view>
-      <view class="red">￥{{item.totalAmount}}</view>
+      <!-- <view class="mr-10">实付</view>
+      <view class="red">￥{{item.totalAmount}}</view> -->
     </view>
     <view class="btn-box">
-      <van-button data-refundno="{{item.refundNo}}" bind:click="cancelRefund"  type="primary" custom-class="button-right">取消退货</van-button>
+      <van-button data-refundno="{{item.refundNo}}" bind:click="cancelRefund" type="primary" custom-class="button-right">取消退货</van-button>
     </view>
   </view>
 </view>

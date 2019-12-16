@@ -4,8 +4,8 @@
     "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
     "van-button": "/miniprogram_npm/@vant/weapp/button/index",
     "default": "../../components/default/default",
-    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index"
-    
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index",
+    "van-count-down":"/miniprogram_npm/@vant/weapp/count-down/index"
   },
   "navigationBarTitleText": "我的订单"
 }

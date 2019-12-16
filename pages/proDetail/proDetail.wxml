@@ -1,2 +1,2 @@
 <!--pages/proDetail/proDetail.wxml-->
-<text>pages/proDetail/proDetail.wxml</text>
+<image src="{{detail.bigPicUrl}}"></image>

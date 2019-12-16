@@ -10,7 +10,8 @@ Page({
    */
   data: {
     active: "",
-    orderDtoList: []
+    orderDtoList: [],
+    time: 30 * 60 * 60 * 1000
   },
   step: "",
   pageNo: 1,
@@ -26,12 +27,18 @@ Page({
       active: index
     })
     let type = this.getType(index)
-    console.log(index,type,'type')
     this.getOrderList(type)
   },
   //订单详情
   goToDetail(e){
     let orderNo = e.currentTarget.dataset.orderno
+    let type = e.currentTarget.dataset.type
+    if (type == "service"){
+      wx.navigateTo({
+        url: '/pages/soldServiceDetail/soldServiceDetail?refundNo=' + orderNo
+      })
+      return
+    }
     wx.navigateTo({
       url: '/pages/orderDetail/orderDetail?orderNo=' + orderNo
     })
@@ -66,7 +73,7 @@ Page({
     let ret = await post("/order/toOrderPay.do",{
       orderNo: orderNo
     })
-    this.payment(ret)
+    this.payment(ret, orderNo)
     if (ret.respCode === "0000") {
       Toast("操作成功")
       this.getOrderList("unPay")
@@ -94,7 +101,7 @@ Page({
     }
     console.log(ret)
   },
-  payment(ret){
+  payment(ret, orderNo){
     wx.requestPayment({
       timeStamp: ret.timeStamp,
       nonceStr: ret.nonceStr,
@@ -111,7 +118,10 @@ Page({
         // })
       },
       fail(res) {
-
+        post("order/notPayOrder.do",{
+          orderNo: orderNo
+        })
+        
         // wx.redirectTo({
         //   url: '/pages/myOrder/myOrder?type=' + 'unPay',
         // })
@@ -127,7 +137,8 @@ Page({
       })
       let orderDtoList = ret.refundList.map(item => {
         item.orderTime = formatTime(item.createTime)
-        item.totalAmount = moneyFormat(item.totalAmount)
+        item.refundPic = getImg(item.refundPic)
+        item.totalAmount = moneyFormat(item.refundAmount)
         item.status = this.getStatus(item.status)
         item.refundType = this.getRefund(item.refundType)
         return item
@@ -144,6 +155,9 @@ Page({
       size: this.pageSize 
     })
     let orderDtoList = ret.orderDtoList.map(item => {
+      if (type == "unpay") {
+        item.endTime = item.ordertime + 15 * 60 * 1000
+      }
       item.orderTime = formatTime(item.orderTime)
       item.totalAmount = moneyFormat(item.totalAmount)
       item.totalNum = item.productSimpleList.length
