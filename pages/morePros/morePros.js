@@ -1,5 +1,6 @@
 import { post, getImg } from '../../api/http.js'
 import { moneyFormat } from '../../utils/util.js'
+const Toast = getApp().globalData.Toast
 Page({
 
   /**
@@ -15,6 +16,19 @@ Page({
   pageSize: 5,
   pageNo: 1,
   moduleCode: "",
+  addToCar(e) {
+    let code = e.currentTarget.dataset.code
+    post("shopCar/putProToShopCar.do", {
+      userCode: wx.getStorageSync("code"),
+      productCode: code,
+      amount: 1,
+      putType: "fromPro"
+    }).then(res => {
+      Toast("添加成功")
+    }).catch(err => {
+      console.error(err)
+    })
+  },
   async getPro() {
     let ret = await post("mini/getModuleProList.do",{
       moduleCode: this.moduleCode,

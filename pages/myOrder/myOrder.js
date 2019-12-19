@@ -155,8 +155,9 @@ Page({
       size: this.pageSize 
     })
     let orderDtoList = ret.orderDtoList.map(item => {
-      if (type == "unpay") {
-        item.endTime = item.ordertime + 15 * 60 * 1000
+      if (type == "unPay") {
+        item.endTime = item.orderTime + 15 * 60 * 1000 - new Date().getTime()
+        console.log(item.endTime,'endtime')
       }
       item.orderTime = formatTime(item.orderTime)
       item.totalAmount = moneyFormat(item.totalAmount)

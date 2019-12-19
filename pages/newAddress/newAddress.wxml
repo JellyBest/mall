@@ -1,5 +1,5 @@
 <!--pages/newAddress/newAddress.wxml-->
-<van-overlay show="{{ true }}" bind:click="onClickHide" />
+<!-- <van-overlay show="{{ true }}" bind:click="onClickHide" /> -->
 <view class="cell">
   <view class="label">收货人</view>
   <view>
@@ -12,13 +12,13 @@
     <input bindinput="inputChange" data-name="receiveMobile" value="{{receiveMobile}}" placeholder="请填写手机号码"> </input>
   </view>
 </view>
-<view class="cell">
+<!-- <view class="cell">
   <view class="label">收货地址</view>
   <view bindtap="showClick">
     请选择收货地址
   </view>
-</view>
-<!-- <view class="cell">
+</view> -->
+<view class="cell">
   <view class="label">收货地址</view>
   <picker bindchange="bindProvinceChange" value="{{provinceIndex}}" range="{{provinceArray}}">
     <view class="picker">
@@ -35,7 +35,7 @@
       {{districtArray[districtIndex]?districtArray[districtIndex]:"请选择区"}}
     </view>
   </picker>
-</view> -->
+</view>
 <view class="cell">
   <view class="label">详细地址</view>
   <view>
@@ -52,4 +52,4 @@
   <view class="submit btn" bindtap="addClick">确定添加</view>
 </view>
 <van-toast id="van-toast" />
-<van-dialog id="van-dialog" />
+<!-- <van-dialog id="van-dialog" /> -->

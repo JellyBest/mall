@@ -1,15 +1,16 @@
 <!--pages/search/search.wxml-->
 <view class="search">
-  <van-icon bindtap="searchClick" name="search" size="40rpx" color="#333" />
-  <input placeholder="胡萝卜" bindinput="inputChange"></input>
+  <van-search maxlength="10" use-action-slot bind:search="searchClick" bind:change="onChange" value="{{ searchParam.productName }}" placeholder="请输入商品名">
+     <view slot="action" bind:tap="searchClick">搜索</view>
+  </van-search>
+  <!-- <van-icon bindtap="searchClick" name="search" size="40rpx" color="#333" />
+  <input maxlength="10" placeholder="胡萝卜" bindinput="inputChange" ></input> -->
 </view>
-
-
 <view class="title">
   <view>商家推荐</view>
-  <van-icon name="delete" size="40rpx" />
+  <!-- <van-icon name="delete" size="40rpx" /> -->
 </view>
 <view class="search-tags">
-  <view class="tag" wx:for="{{searchNames}}" wx:key="{{index}}">{{item}}</view>
+  <view bindtap="seachName" data-name="{{item}}" class="tag" wx:for="{{searchNames}}" wx:key="{{index}}">{{item}}</view>
   <!-- <view class="tag">胡萝卜</view> -->
 </view>

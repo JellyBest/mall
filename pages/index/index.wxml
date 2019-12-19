@@ -4,7 +4,7 @@
 
 <view class="content">
   <view class="top">
-    <image class="logo" src="../../assets/head.png"></image>
+    <image class="logo" src="{{storeInfo.merchantLogoPic}}"></image>
     <view class="name">{{storeInfo.merchantName}}</view>
   </view>
   <view class="info">

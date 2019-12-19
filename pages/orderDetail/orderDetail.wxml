@@ -1,19 +1,111 @@
 <view class="top">
-  <view class="order">{{orderDetail.status}}</view>
-</view>
-<view class="item">
-    <view class="list" wx:for="{{orderDetail.orderProductList}}" wx:for-item="child">
-      <view class="left">
-        <image src="{{child.productPicUrl}}" class="good"></image>
-        <view class="name">胡萝卜</view>
-        <!-- <view class="red">￥{{}}</view> -->
-        <!-- <view class="bagWeight">50g/份</view> -->
+  <view class="order">
+    <image class="status-icon" src="{{orderDetail.statusIcon}}"></image>
+    <view class="order-desc">
+      <view hidden="{{orderDetail.status != '0'}}">
+        <van-count-down use-slot time="{{ orderDetail.limitTime }}" bind:change="onChange">
+          <text class="time-item">({{ timeData.minutes }}:</text>
+          <text class="time-item">{{ timeData.seconds }})</text>
+        </van-count-down>
       </view>
-      <view>×{{child.num}}</view>
-    </view>
-    <view class="total">
-      <view class="mr-10">共{{orderDetail.totalNum}}件</view>
-      <view class="mr-10">实付</view>
-      <view class="red">￥{{orderDetail.totalAmount}}</view>
+      <view class="order-desc-btm">
+        <view>{{orderDetail.statusDesc}}</view>
+        <view class="pay" hidden="{{orderDetail.status != '0'}}">需支付：￥{{orderDetail.totalAmount}}</view>
+        <view class="red" hidden="{{orderDetail.status != '2'}}">{{orderDetail.getOrderStatus == '0' ? '未接单': '已接单'}}</view>
+      </view>
     </view>
   </view>
+  <!-- <view class="order" hidden="{{orderDetail.status != '待支付'}}">{{orderDetail.status}}</view> -->
+</view>
+<view class="middle">
+  <view class="mid-cell">
+    <view>
+      配送地址
+    </view>
+    <view>
+      <view class="receive-name">{{orderDetail.receiveName}} {{orderDetail.receiveMobileNo}}</view>
+      <view class="receive-ads">
+      {{orderDetail.receiveProvinceName}}省{{orderDetail.receiveCityName}}市{{orderDetail.receiveDistrictName}}区{{orderDetail.receiveAddressDetail}}</view>
+    </view>
+  </view>
+</view>
+<view class="item">
+  <view class="list" wx:for="{{orderDetail.orderProductList}}" wx:for-item="child">
+    <image src="{{child.productPicUrl}}" class="good"></image>
+    <view class="left">
+      <view class="name">
+        {{child.productName}}
+      </view>
+      <view class="item-btm">
+        <view>单价：￥{{child.price}}</view>
+        <view class="good-num">数量：{{child.num}}{{child.standard}}</view>
+      </view>
+    </view>
+    
+  </view>
+  <!-- <view class="total">
+    <view class="mr-10">共{{orderDetail.totalNum}}件</view>
+    <view class="mr-10">实付</view>
+    <view class="red">￥{{orderDetail.totalAmount}}</view>
+  </view> -->
+</view>
+<view class="cells">
+  <view class="cell">
+    <view>
+      商品金额：
+    </view>
+    <view class="color-34">
+      ￥{{orderDetail.totalProductPrice}}
+    </view>
+  </view>
+  <view class="cell">
+    <view>
+      商品邮费：
+    </view>
+    <view class="color-34">
+      ￥{{orderDetail.totalPostPrice}}
+    </view>
+  </view>
+  <view class="cell">
+    <view>
+      实付金额：
+    </view>
+    <view class="red">
+      ￥{{orderDetail.totalAmount}}
+    </view>
+  </view>
+  <view class="cell" hidden="{{orderDetail.status != '4' || orderDetail.sendType != 'BY_EXPRESS'}}">
+    <view>物流公司</view>
+    <view>{{orderDetail.expressName}}</view>
+  </view>
+  <view class="cell" hidden="{{orderDetail.status != '4' || orderDetail.sendType != 'BY_EXPRESS'}}">
+    <view>物流单号</view>
+    <view>{{orderDetail.expressNo}}</view>
+  </view>
+  <view class="cell" hidden="{{orderDetail.status != '4' || orderDetail.sendType != 'SELF'}}">
+    <view>派送员</view>
+    <view>{{orderDetail.deliveryName}}</view>
+  </view>
+  <view class="cell" hidden="{{orderDetail.status != '4' || orderDetail.sendType != 'SELF'}}">
+    <view>联系方式</view>
+    <view>{{orderDetail.deliveryMolibe}}</view>
+  </view>
+</view>
+<view class="cells">
+  <view class="cell">
+    <view>
+      订单号码：
+    </view>
+    <view >
+      {{orderDetail.orderNo}}
+    </view>
+  </view>
+  <view class="cell">
+    <view>
+      下单时间：
+    </view>
+    <view >
+      {{orderDetail.orderTime}}
+    </view>
+  </view>
+</view>

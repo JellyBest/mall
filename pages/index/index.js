@@ -1,5 +1,7 @@
 //index.js
-import { domain } from "../../api/base.js"
+import {
+  domain
+} from "../../api/base.js"
 import {
   originPost,
   getImg
@@ -30,7 +32,11 @@ Page({
     let pics = storeInfo.picUuid.split(',').map(item => {
       return getImg(item)
     })
+    let merchantLogoPic = getImg(storeInfo.merchantLogoPic)
+    let backPic = getImg(storeInfo.backPic)
     storeInfo.pics = pics
+    storeInfo.merchantLogoPic = merchantLogoPic
+    storeInfo.backPic = backPic
     this.setData({
       storeInfo: storeInfo
     })
@@ -77,12 +83,37 @@ Page({
       success: res => {
         // const nonce = res.header.nonce
         // wx.setStorageSync("nonce", nonce)
-        if (res.statusCode == 200 && res.data.respCode == "0000") {
-          wx.setStorageSync("token", res.data.data.token)
-          wx.setStorageSync("code", res.data.data.userCode)
-          app.globalData.userInfo = res.data.data.userInfo
-          this.goNext()
+        if (res.statusCode == 200) {
+          if (res.data.respCode == "0000") {
+            wx.setStorageSync("token", res.data.data.token)
+            wx.setStorageSync("code", res.data.data.userCode)
+            app.globalData.userInfo = res.data.data.userInfo
+            this.goNext()
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: res.data.respInfo,
+              showCancel: false
+            })
+          }
+        }else{
+          wx.showModal({
+            title: '提示',
+            content: '网络错误',
+            showCancel: false
+          })
         }
+        // if (res.statusCode == 200 && res.data.respCode == "0000") {
+        //   wx.setStorageSync("token", res.data.data.token)
+        //   wx.setStorageSync("code", res.data.data.userCode)
+        //   app.globalData.userInfo = res.data.data.userInfo
+        //   this.goNext()
+        // }else{
+        //   wx.showModal({
+        //     title: '提示',
+        //     content: res.data.respInfo,
+        //   })
+        // }
         console.log(res, 'login')
       }
     })
@@ -115,6 +146,10 @@ Page({
           resolve(this.code)
         },
         fail: error => {
+          wx.showModal({
+            title: '提示',
+            content: error,
+          })
           reject(error)
         }
       })

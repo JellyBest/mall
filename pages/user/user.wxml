@@ -16,20 +16,20 @@
       <image class="media-img" src="../../assets/pay.png"></image>
       <view class="media-txt">待付款</view>
     </view>
-    <view class="grid-item">
-      <image class="media-img" data-step="unSend" bindtap="goToMyOrder" src="../../assets/receive.png"></image>
+    <view class="grid-item" data-step="unSend" bindtap="goToMyOrder">
+      <image class="media-img" src="../../assets/receive.png"></image>
       <view class="media-txt">待发货</view>
     </view>
-    <view class="grid-item">
-      <image class="media-img" data-step="sendUnReceive" bindtap="goToMyOrder" src="../../assets/receive.png"></image>
+    <view class="grid-item" data-step="sendUnReceive" bindtap="goToMyOrder">
+      <image class="media-img"  src="../../assets/receive.png"></image>
       <view class="media-txt">待收货</view>
     </view>
-    <view class="grid-item">
-      <image class="media-img" data-step="receive" bindtap="goToMyOrder" src="../../assets/received.png"></image>
+    <view class="grid-item" data-step="receive" bindtap="goToMyOrder">
+      <image class="media-img"  src="../../assets/received.png"></image>
       <view class="media-txt">已收货</view>
     </view>
-    <view class="grid-item">
-      <image class="media-img" data-step="service" bindtap="goToMyOrder" src="../../assets/service.png"></image>
+    <view class="grid-item" data-step="service" bindtap="goToMyOrder">
+      <image class="media-img"  src="../../assets/service.png"></image>
       <view class="media-txt">售后</view>
     </view>
   </view>

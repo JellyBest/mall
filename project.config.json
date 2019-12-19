@@ -137,6 +137,21 @@
 					"id": -1,
 					"name": "pages/proDetail/proDetail",
 					"pathName": "pages/proDetail/proDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "pages/orderDetail/orderDetail",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "orderNo=HY20191216174816208422",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/soldServiceDetail/soldServiceDetail",
+					"pathName": "pages/soldServiceDetail/soldServiceDetail",
+					"query": "refundNo=RF20191212143535912346",
 					"scene": null
 				}
 			]

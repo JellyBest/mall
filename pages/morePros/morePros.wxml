@@ -8,7 +8,7 @@
             <view class="red-price">¥{{item.price}}</view>
             <view class="grey-price">{{item.oldPrice}}元</view>
           </view>
-          <image class="car" src="../../assets/car.png"></image>
+          <image data-code="{{item.productCode}}" bindtap="addToCar" class="car" src="../../assets/car.png"></image>
         </view>
       </view>
     </van-card>
@@ -26,5 +26,4 @@
   </view>
 </view>
 <view hidden="{{showBtm}}" class="pull-btm">{{btmData}}</view>
-
-
+<van-toast id="van-toast" />

@@ -23,7 +23,6 @@ Page({
   },
   //加入购物车
   addToCar(e){
-    console.log(e)
     let code = e.currentTarget.dataset.code
     post("shopCar/putProToShopCar.do",{
       userCode: wx.getStorageSync("code"),

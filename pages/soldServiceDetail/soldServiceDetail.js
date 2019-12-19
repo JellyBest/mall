@@ -1,5 +1,9 @@
 // pages/soldServiceDetail/soldServiceDetail.js
-import { post, uploadImg } from '../../api/http.js'
+import { post, getImg } from '../../api/http.js'
+import {
+  moneyFormat,
+  formatTime
+} from '../../utils/util.js'
 Page({
 
   /**
@@ -14,27 +18,63 @@ Page({
       refundNo: this.refundNo
     })
     let refund = ret.refund
-    refund.status = this.getStatus(refund.status)
+    refund.refundType = this.getType(refund.refundType)
+    refund.createTime = formatTime(refund.createTime)
+    refund.refundPic = getImg(refund.refundPic)
+    refund.refundAmount = moneyFormat(refund.refundAmount)
+    refund.statusTxt = this.getStatus(refund.status).statusTxt
+    refund.statusDesc = this.getStatus(refund.status).statusDesc
     this.setData({
       refund: refund
     })
   },
+  getType(type){
+    switch(type){
+      case '0':
+        return "仅退款"
+      case '1':
+        return "退货退款"
+      case '2':
+        return "部分退货退款"
+    }
+  },
   getStatus(type){
     switch(type){
       case "0": 
-        return "未审核"
+        return{
+          statusTxt: "未审核",
+          statusDesc: "您已成功发起售后申请，请耐心等待商家处理！"
+        }
       case "1":
-        return "审核成功"
+        return {
+          statusTxt: "已审核",
+          statusDesc: "您的售后申请商家已审核，请等待商家退款处理！"
+        }
       case "2":
-        return "审核失败"
+        return {
+          statusTxt: "审核失败",
+          statusDesc: "您的售后申请商家已拒绝！"
+        }
       case "3":
-        return "退款成功"
+        return {
+          statusTxt: "已退款",
+          statusDesc: "您的售后申请商家已退款，感谢使用！"
+        }
       case "4":
-        return "退款失败"
+        return {
+          statusTxt: "退款失败",
+          statusDesc: "您的售后申请商家退款异常，请联系商家处理！"
+        }
       case "5":
-        return "已取消"
+        return {
+          statusTxt: "已取消",
+          statusDesc: "您已取消了售后申请，感谢使用！"
+        }
       case "6":
-        return "线下处理完成"
+        return {
+          statusTxt: "线下处理",
+          statusDesc: "您的售后申请商家已转线下处理，请联系商家！"
+        }
     }
   },
   /**

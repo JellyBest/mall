@@ -84,12 +84,15 @@ page{
   margin-bottom: 20rpx;
 }
 .pics{
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 .store-pic{
   width: 310rpx;
   height: 310rpx;
   border-radius: 40rpx;
+  margin-right: 30rpx;
+}
+.store-pic:last-of-type{
+  margin-right: 0;
 }
