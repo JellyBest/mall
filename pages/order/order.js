@@ -11,7 +11,8 @@ Page({
   data: {
     imageURL: "../../../assets/carrot.png",
     userProductDtoList: [],
-    address: null
+    address: null,
+    totalAmount: ""
   },
   clickBtn(){
     if(this.data.address == ''){
@@ -42,6 +43,10 @@ Page({
       // userCode: wx.getStorageSync("code")
       orderNo: orderNo
     })
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
     console.log(ret)
     // { }
     wx.requestPayment({
@@ -55,8 +60,10 @@ Page({
         wx.redirectTo({
           url: '/pages/myOrder/myOrder?type=' +'sendUnReceive',
         })
+        wx.hideLoading()
       },
       fail(res){
+        wx.hideLoading()
         post("order/notPayOrder.do", {
           orderNo: orderNo
         }).then(
@@ -71,17 +78,21 @@ Page({
     })
   },
   getCarProds() {
-    post("shopCar/getShopCarProductList.do", {
-      userCode: wx.getStorageSync("code")
+    post("order/confirmOrder.do", {
+      // userCode: wx.getStorageSync("code")
+      type: "fromShopCar",
+      receiveCode: this.receiveCode
     }).then(res => {
-      let data = res.userProductDtoList
+      console.log(res)
+      let data = res.productSimpleList
       data.map(item => {
         item.titlePic = getImg(item.titlePic)
         item.price = moneyFormat(item.price)
         item.postPrice = moneyFormat(item.postPrice)
         return item
       })
-      this.setData({ userProductDtoList: data })
+      let totalAmount = moneyFormat(res.totalAmount)
+      this.setData({ userProductDtoList: data, totalAmount })
     }).catch(err => {
       Toast.fail(err.respInfo);
     })
@@ -118,13 +129,16 @@ Page({
       url: '/pages/user/user',
     })
   },
+  receiveCode: "",
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    this.type = options.type
+    this.receiveCode = options.receiveCode
     this.getCarProds()
     this.getAddressList()
-    this.type = options.type
   },
 
   /**

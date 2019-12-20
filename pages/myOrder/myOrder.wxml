@@ -208,7 +208,7 @@
     </view>
 
 
-    <view class="btn-box">
+    <view class="btn-box" hidden="{{item.status != '0'}}">
       <van-button data-refundno="{{item.refundNo}}" bind:click="cancelRefund" type="primary" custom-class="button-right">取消退货</van-button>
     </view>
   </view>

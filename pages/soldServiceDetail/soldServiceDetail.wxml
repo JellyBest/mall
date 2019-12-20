@@ -13,36 +13,22 @@
   </view>
 </view>
 
+
 <view class="middle">
-  <view class="mid-cell" hidden="{{refund.status != '2'}}">
+  <view style="margin-bottom:24rpx;" class="mid-cell" hidden="{{refund.status != '2'}}">
     <view class="label">
       拒绝原因:
     </view>
     <view>
-     {{refund.failAuditReason}}
+      {{refund.failAuditReason}}
     </view>
   </view>
 </view>
-<view class="item">
-  <!-- <view class="list" wx:for="{{refund.orderProductList}}" wx:for-item="child">
-    <image src="{{child.productPicUrl}}" class="good"></image>
-    <view class="left">
-      <view class="name">
-        {{child.productName}}
-      </view>
-      <view class="item-btm">
-        <view>单价：￥{{child.price}}</view>
-        <view class="good-num">数量：{{child.num}}{{child.standard}}</view>
-      </view>
-    </view>
-
-  </view> -->
-  <!-- <view class="total">
-    <view class="mr-10">共{{refund.totalNum}}件</view>
-    <view class="mr-10">实付</view>
-    <view class="red">￥{{refund.totalAmount}}</view>
-  </view> -->
+<!-- <view class="item"></view> -->
+<view class="btn-box" hidden="{{refund.status != '0'}}">
+  <van-button data-refundno="{{refund.refundNo}}" bind:click="cancelRefund" type="primary" custom-class="button-right">撤销申请</van-button>
 </view>
+<!-- <view class="item"></view> -->
 <view class="cells">
   <view class="cell">
     <view class="label">
@@ -80,12 +66,12 @@
     <view>申请时间：</view>
     <view>{{refund.createTime}}</view>
   </view>
-  <view class="cell" >
+  <view class="cell">
     <view>售后原因</view>
     <view>{{refund.refundReason}}</view>
   </view>
-  <view class="" >
-    <view class="label">售后图片</view>
+  <view class="">
+    <view class="label-pic">售后图片</view>
     <view>
       <image class="refund-pic" src="{{refund.refundPic}}"></image>
     </view>

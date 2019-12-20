@@ -12,11 +12,54 @@ Page({
     userProductDtoList: [], 
     step:2,
     imageURL: "../../../assets/carrot.png",
-    showDefault:false
+    showDefault:false,
+    address: ""
   },
   clickBtn(e){
+    if (this.data.address == '') {
+      wx.showModal({
+        title: '提示',
+        content: '请先选择默认地址',
+        success(res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/user/user',
+            })
+          }
+        }
+      })
+      return
+    }
+    
     wx.navigateTo({
-      url: '/pages/order/order?type='+ 1,
+      url: '/pages/order/order?receiveCode=' + this.data.address.receiveCode + '&type='+ 1,
+    })
+  },
+  getAddressList() {
+    post("address/wxReceiveList.do", {
+    }).then(res => {
+      let rt = res.receiveList
+      if (rt.length == 0) {
+        Toast("请先配置收获地址")
+        wx.switchTab({
+          url: '/pages/user/user',
+        })
+        return
+      }
+      let address = rt.filter(item => {
+        return item.isDefault == 1
+      })
+      if (address.length == '0') {
+        address = ""
+      } else {
+        address = address[0]
+      }
+      console.log(address, 'address')
+      this.setData({
+        address: address
+      })
+    }).catch(err => {
+      console.error(err)
     })
   },
   deletePro(e){
@@ -95,6 +138,7 @@ Page({
    */
   onShow: function () {
     this.getCarProds()
+    this.getAddressList()
   },
 
   /**

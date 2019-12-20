@@ -16,9 +16,9 @@
         <view hidden="{{item.isPost == '1'}}">
           <van-tag  round type="danger" plain>包邮</van-tag>
         </view>
-        <view hidden="{{item.isPost == '0'}}">
+        <!-- <view hidden="{{item.isPost == '0'}}">
           <van-tag  round type="danger" plain>不包邮</van-tag>
-        </view>
+        </view> -->
         <view hidden="{{item.isDis == '1'}}">
           <van-tag  round type="danger" plain>折扣款</van-tag>
         </view>

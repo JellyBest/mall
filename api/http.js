@@ -80,6 +80,7 @@ export function originPost(url,data){
 export function post(url,data){
   wx.showLoading({
     title: '加载中...',
+    mask: true
   })
   const param = {
     msgSrc: "WUHANHONGYI" 

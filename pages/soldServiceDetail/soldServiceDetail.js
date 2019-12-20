@@ -13,6 +13,16 @@ Page({
     refund: {}
   },
   refundNo: "",
+  async cancelRefund(e) {
+    let refundNo = e.currentTarget.dataset.refundno
+    let ret = await post("/refund/cancelRefund.do", {
+      refundNo: refundNo
+    })
+    if (ret.respCode === "0000") {
+      Toast("已取消")
+      this.getDetail()
+    }
+  },
   async getDetail(){
     let ret = await post("refund/refundDetail.do",{
       refundNo: this.refundNo

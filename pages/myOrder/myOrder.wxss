@@ -1,9 +1,11 @@
 /* pages/myOrder/myOrder.wxss */
 .item{
   background-color: #f7f7f7;
+  margin-bottom: 24rpx;
 }
 .order-box{
   margin-top: 14rpx;
+  padding-bottom: 40rpx;
 }
 .status-box{
   display: flex;

@@ -86,7 +86,7 @@ Page({
     })
     if (ret.respCode === "0000") {
       Toast("已取消")
-      this.getOrderList("unPay")
+      this.getOrderList("service")
     }
   },
   //取消订单
@@ -97,11 +97,15 @@ Page({
     })
     if(ret.respCode === "0000"){
       Toast("已取消")
-      this.getOrderList("service")
+      this.getOrderList("unPay")
     }
     console.log(ret)
   },
   payment(ret, orderNo){
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
     wx.requestPayment({
       timeStamp: ret.timeStamp,
       nonceStr: ret.nonceStr,
@@ -109,22 +113,17 @@ Page({
       signType: ret.signType,
       paySign: ret.paySign,
       success(res) {
+        wx.hideLoading()
         console.log(res, 'pau')
         this.setData({
           active: 1
         })
-        // wx.redirectTo({
-        //   url: '/pages/myOrder/myOrder?type=' + 'sendUnReceive',
-        // })
       },
       fail(res) {
+        wx.hideLoading()
         post("order/notPayOrder.do",{
           orderNo: orderNo
         })
-        
-        // wx.redirectTo({
-        //   url: '/pages/myOrder/myOrder?type=' + 'unPay',
-        // })
       }
     })
   },
@@ -139,7 +138,7 @@ Page({
         item.orderTime = formatTime(item.createTime)
         item.refundPic = getImg(item.refundPic)
         item.totalAmount = moneyFormat(item.refundAmount)
-        item.status = this.getStatus(item.status)
+        item.statusTxt = this.getStatus(item.status)
         item.refundType = this.getRefund(item.refundType)
         return item
       })
@@ -267,6 +266,8 @@ Page({
    */
   onShow: function () {
     // this.getOrderList(this.type)
+    this.getActive(this.step)
+    this.getOrderList(this.step)
   },
 
   /**

@@ -113,6 +113,9 @@ Page({
     console.log(ret)
     if (ret.respCode === "0000"){
       Toast("添加成功")
+      wx.navigateBack({
+        delta: 1
+      })
     }
   },
 

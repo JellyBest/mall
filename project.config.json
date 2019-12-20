@@ -25,7 +25,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.9.2",
 	"appid": "wx015a91dc04484d47",
-	"projectname": "mall-1106",
+	"projectname": "mall-1220",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -145,6 +145,13 @@
 					"name": "pages/orderDetail/orderDetail",
 					"pathName": "pages/orderDetail/orderDetail",
 					"query": "orderNo=HY20191216174816208422",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/soldServiceDetail/soldServiceDetail",
+					"pathName": "pages/soldServiceDetail/soldServiceDetail",
+					"query": "refundNo=RF20191212143535912346",
 					"scene": null
 				},
 				{

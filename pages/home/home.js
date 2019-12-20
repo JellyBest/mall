@@ -45,6 +45,7 @@ Page({
     })
   },
   goToDetail(e){
+    console.log(e)
     let productCode = e.currentTarget.dataset.code
     wx.navigateTo({
       url: '/pages/proDetail/proDetail?productCode=' + productCode,
@@ -138,7 +139,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getList()
   },
 
   /**
