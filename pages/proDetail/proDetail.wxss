@@ -1,1 +1,31 @@
 /* pages/proDetail/proDetail.wxss */
+page{
+  padding-top: 20rpx;
+  padding-bottom: 120rpx;
+}
+.desc{
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+}
+.name{
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #333;
+}
+.price-box{
+  font-size: 30rpx;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price{
+  display: flex;
+  align-items: center;
+}
+.old-price{
+  text-decoration: line-through;
+  margin-left: 20rpx;
+}

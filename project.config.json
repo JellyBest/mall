@@ -160,6 +160,13 @@
 					"pathName": "pages/soldServiceDetail/soldServiceDetail",
 					"query": "refundNo=RF20191212143535912346",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/proDetail/proDetail",
+					"pathName": "pages/proDetail/proDetail",
+					"query": "productCode=1575798498560008",
+					"scene": null
 				}
 			]
 		}

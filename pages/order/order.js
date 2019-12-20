@@ -29,11 +29,17 @@ Page({
       })
       return 
     }
-    post("/order/order.do",{
-      type: this.type == 1 ? "fromShopCar" :"fromPro",
-      receiveCode: this.data.address.receiveCode,
+    let param = {
+
+      type: this.type == 2 ? "fromPro" : "fromShopCar",
+      receiveCode: this.receiveCode,
       userCode: wx.getStorageSync("code")
-    }).then(res => {
+    }
+    if (this.type == 2) {
+      param.productCode = this.productCode
+      param.productNum = 1
+    }
+    post("/order/order.do",param).then(res => {
       let orderNo = res.orderNo
       this.pay(orderNo)
     })
@@ -78,11 +84,16 @@ Page({
     })
   },
   getCarProds() {
-    post("order/confirmOrder.do", {
-      // userCode: wx.getStorageSync("code")
-      type: "fromShopCar",
+    let param = {
+      
+      type: this.type == 2 ? "fromPro" : "fromShopCar",
       receiveCode: this.receiveCode
-    }).then(res => {
+    }
+    if(this.type == 2){
+      param.productCode = this.productCode
+      param.productNum = 1
+    }
+    post("order/confirmOrder.do", param).then(res => {
       console.log(res)
       let data = res.productSimpleList
       data.map(item => {
@@ -137,6 +148,7 @@ Page({
     
     this.type = options.type
     this.receiveCode = options.receiveCode
+    this.productCode = options.productCode
     this.getCarProds()
     this.getAddressList()
   },

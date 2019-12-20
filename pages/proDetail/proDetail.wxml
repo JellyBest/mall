@@ -1,2 +1,24 @@
 <!--pages/proDetail/proDetail.wxml-->
+<image src="{{detail.titlePic}}"></image>
+<view class="desc">
+  <view class="name"> {{detail.productName}} </view>
+  <view class="price-box">
+    <view class="price">
+      <view style="color:#dd666a;font-size:34rpx;">￥{{detail.price}}</view>
+      <view class="old-price" style="color:#ccc;">{{detail.oldPrice}}元</view>
+    </view>
+    <view style="color:#ccc;">运费：{{detail.postPrice}}元</view>
+    <view style="color:#333;">销量：{{detail.saleNum}}{{detail.standArd}}</view>
+  </view>
+</view>
 <image src="{{detail.bigPicUrl}}"></image>
+
+<view>
+  <van-goods-action>
+    <!-- <van-goods-action-icon icon="chat-o" text="客服" bind:click="onClickIcon" /> -->
+    <van-goods-action-icon icon="cart-o" text="购物车" bind:click="goToCar" />
+    <van-goods-action-button data-code="{{detail.productCode}}" text="加入购物车" type="warning" bind:click="addToCar" />
+    <van-goods-action-button text="立即购买" bind:click="goToOrder" />
+  </van-goods-action>
+</view>
+<van-toast id="van-toast" />

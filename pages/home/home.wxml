@@ -21,7 +21,7 @@
       </view>
     </view>
     <view class="new-list shop" hidden="{{item.moduleType == 'NEW_PRO'}}">
-      <view class="shop-prod" wx:for="{{item.productDtoList}}" wx:key="{{item.productId}}">
+      <view bindtap="goToDetail" data-code="{{item.productCode}}" class="shop-prod" wx:for="{{item.productDtoList}}" wx:key="{{item.productId}}">
         <image class="small-pic" src="{{item.titlePic}}"></image>
       </view>
     </view>
